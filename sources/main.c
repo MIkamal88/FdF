@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/07 09:29:43 by mshehata          #+#    #+#             */
-/*   Updated: 2022/11/07 09:29:44 by mshehata         ###   ########.fr       */
+/*   Created: 2023/01/15 10:01:35 by mshehata          #+#    #+#             */
+/*   Updated: 2023/01/15 10:17:03 by mshehata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/fdf.h"
 
-int	ft_isalpha(int i)
+int	main(void)
 {
-	if (('a' <= i && i <= 'z') || ('A' <= i && i <= 'Z'))
-		return (1);
-	return (0);
+	void	*mlx;
+	void	*mlx_win;
+
+	mlx = mlx_init();
+	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
+	mlx_loop(mlx);
 }

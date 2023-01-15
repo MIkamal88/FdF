@@ -6,11 +6,11 @@
 /*   By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 14:31:47 by mshehata          #+#    #+#             */
-/*   Updated: 2022/11/21 14:25:08 by mshehata         ###   ########.fr       */
+/*   Updated: 2023/01/15 10:23:26 by mshehata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/libft.h"
 
 char	*ft_strtrim(char const *s1, char const *set)
 {

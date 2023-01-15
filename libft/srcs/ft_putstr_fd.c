@@ -6,11 +6,11 @@
 /*   By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 14:49:11 by mshehata          #+#    #+#             */
-/*   Updated: 2022/11/25 10:06:03 by mshehata         ###   ########.fr       */
+/*   Updated: 2023/01/15 10:22:51 by mshehata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/libft.h"
 
 void	ft_putstr_fd(char *s, int fd)
 {

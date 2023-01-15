@@ -6,11 +6,11 @@
 /*   By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 15:29:29 by mshehata          #+#    #+#             */
-/*   Updated: 2022/11/27 14:26:45 by mshehata         ###   ########.fr       */
+/*   Updated: 2023/01/15 10:22:48 by mshehata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/libft.h"
 
 static int	count_words(char const *str, char c)
 {

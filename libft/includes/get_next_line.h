@@ -6,15 +6,15 @@
 /*   By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 15:18:40 by mshehata          #+#    #+#             */
-/*   Updated: 2022/12/17 16:51:44 by mshehata         ###   ########.fr       */
+/*   Updated: 2023/01/15 10:38:17 by mshehata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
-# include <stdlib.h>
-# include <unistd.h>
+
 # include <fcntl.h>
+# include "../includes/libft.h"
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1000

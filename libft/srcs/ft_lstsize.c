@@ -6,11 +6,11 @@
 /*   By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 18:31:51 by mshehata          #+#    #+#             */
-/*   Updated: 2022/11/19 18:31:51 by mshehata         ###   ########.fr       */
+/*   Updated: 2023/01/15 10:22:17 by mshehata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/libft.h"
 
 int	ft_lstsize(t_list *lst)
 {

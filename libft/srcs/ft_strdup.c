@@ -6,11 +6,11 @@
 /*   By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 08:58:50 by mshehata          #+#    #+#             */
-/*   Updated: 2022/11/25 12:53:09 by mshehata         ###   ########.fr       */
+/*   Updated: 2023/01/15 10:23:01 by mshehata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/libft.h"
 
 char	*ft_strdup(const char *s)
 {

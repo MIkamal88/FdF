@@ -6,11 +6,11 @@
 /*   By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 15:18:24 by mshehata          #+#    #+#             */
-/*   Updated: 2023/01/14 15:51:44 by mshehata         ###   ########.fr       */
+/*   Updated: 2023/01/15 10:23:38 by mshehata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../includes/get_next_line.h"
 
 char	*join_line(char *buffer, char *buf)
 {
