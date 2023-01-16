@@ -3,22 +3,23 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+         #
+#    By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/14 18:07:59 by mshehata          #+#    #+#              #
-#    Updated: 2023/01/15 10:19:59 by mshehata         ###   ########.fr        #
+#    Updated: 2023/01/16 20:31:58 by m_kamal          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = fdf
+MAC = fdf
+LINUX = fdf
 
-LIBFT =	./Libft/srcs/ft_split.c ./Libft/srcs/ft_atoi.c ./Libft/srcs/ft_bzero.c ./Libft/srcs/ft_calloc.c ./Libft/srcs/get_next_line.c\
-		./Libft/srcs/ft_strjoin.c ./Libft/srcs/ft_itoa.c ./Libft/srcs/ft_lstadd_back.c ./Libft/srcs/ft_lstclear.c\
-		./Libft/srcs/ft_strncmp.c ./Libft/srcs/ft_lstadd_front.c ./Libft/srcs/ft_lstdelone.c ./Libft/srcs/ft_lstiter.c\
-		./Libft/srcs/ft_strchr.c ./Libft/srcs/ft_lstlast.c ./Libft/srcs/ft_lstmap.c ./Libft/srcs/ft_lstnew.c ./Libft/srcs/ft_memmove.c\
-		./Libft/srcs/ft_strlen.c ./Libft/srcs/ft_lstsize.c ./Libft/srcs/ft_memchr.c ./Libft/srcs/ft_memcmp.c ./Libft/srcs/ft_memcpy.c\
-		./Libft/srcs/ft_substr.c ./Libft/srcs/ft_memset.c ./Libft/srcs/ft_putchar_fd.c ./Libft/srcs/ft_putnbr_fd.c ./Libft/srcs/ft_putstr_fd.c\
-		./Libft/srcs/ft_strdup.c ./Libft/srcs/ft_strlcat.c ./Libft/srcs/ft_strlcpy.c ./Libft/srcs/ft_strnstr.c ./Libft/srcs/ft_strtrim.c\
+LIBFT =	./libft/srcs/ft_split.c ./libft/srcs/ft_atoi.c ./libft/srcs/ft_bzero.c ./libft/srcs/ft_calloc.c ./libft/srcs/get_next_line.c\
+		./libft/srcs/ft_strjoin.c ./libft/srcs/ft_itoa.c ./libft/srcs/ft_lstadd_back.c ./libft/srcs/ft_lstclear.c\
+		./libft/srcs/ft_strncmp.c ./libft/srcs/ft_lstadd_front.c ./libft/srcs/ft_lstdelone.c ./libft/srcs/ft_lstiter.c\
+		./libft/srcs/ft_strchr.c ./libft/srcs/ft_lstlast.c ./libft/srcs/ft_lstmap.c ./libft/srcs/ft_lstnew.c ./libft/srcs/ft_memmove.c\
+		./libft/srcs/ft_strlen.c ./libft/srcs/ft_lstsize.c ./libft/srcs/ft_memchr.c ./libft/srcs/ft_memcmp.c ./libft/srcs/ft_memcpy.c\
+		./libft/srcs/ft_substr.c ./libft/srcs/ft_memset.c ./libft/srcs/ft_putchar_fd.c ./libft/srcs/ft_putnbr_fd.c ./libft/srcs/ft_putstr_fd.c\
+		./libft/srcs/ft_strdup.c ./libft/srcs/ft_strlcat.c ./libft/srcs/ft_strlcpy.c ./libft/srcs/ft_strnstr.c ./libft/srcs/ft_strtrim.c\
 
 SRCS = ./sources/main.c
 
@@ -30,10 +31,13 @@ FLAGS = -Wall -Wextra -Werror -g #remove -g before submission
 
 RM = rm -f
 
-all :	$(NAME)
+all :	$(LINUX)
 
-$(NAME):	ANNOUNCE $(OFILES)
-	$(CC) $(OFILES) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+$(LINUX):	ANNOUNCE $(OFILES)
+	$(CC) $(OFILES) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(LINUX)
+
+#$(MAC):	ANNOUNCE $(OFILES)
+#	$(CC) $(OBJ) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(MAC)
 
 ANNOUNCE:
 	@echo "\033[0;33mCompiling FdF..."
@@ -44,10 +48,10 @@ clean:
 
 fclean: clean
 	@echo "\033[31mRemoving FdF"
-	@$(RM) $(NAME)
+	@$(RM) $(LINUX)
 
 re: fclean all
 
-.SILENT: $(NAME) $(OFILES)
+.SILENT: $(LINUX) $(OFILES)
 
 .PHONY: all clean fclean re

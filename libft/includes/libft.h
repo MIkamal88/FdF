@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+        */
+/*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 09:30:55 by mshehata          #+#    #+#             */
-/*   Updated: 2023/01/15 10:37:19 by mshehata         ###   ########.fr       */
+/*   Updated: 2023/01/16 20:30:53 by m_kamal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,12 @@
 # define LIBFT_H
 
 # include <unistd.h>
+# include <stdint.h>
 # include <stdlib.h>
+# include <fcntl.h>
+# include <string.h>
+# include <stdio.h>
+# include <sys/wait.h>
 
 typedef struct s_list
 {
