@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+        */
+/*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 10:01:35 by mshehata          #+#    #+#             */
-/*   Updated: 2023/01/17 14:43:42 by mshehata         ###   ########.fr       */
+/*   Updated: 2023/01/20 15:29:08 by m_kamal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
+#include "../includes/color.h"
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
@@ -20,27 +21,33 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
+void	draw_square(t_data *data, t_coords *dimns, int len, int color)
+{
+	while (dimns->x_coord++ <= len)
+		my_mlx_pixel_put(data, dimns->x_coord, dimns->y_coord, color);
+	while (dimns->y_coord++ <= len)
+		my_mlx_pixel_put(data, dimns->x_coord, dimns->y_coord, color);
+	while (dimns->x_coord-- >= 15)
+		my_mlx_pixel_put(data, dimns->x_coord, dimns->y_coord, color);
+	while (dimns->y_coord-- >= 15)
+		my_mlx_pixel_put(data, dimns->x_coord, dimns->y_coord, color);
+}
+
 int	main(void)
 {
-	void	*mlx;
-	void	*mlx_win;
-	t_data	img;
-	int		x;
-	int		y;
+	void		*mlx;
+	void		*mlx_win;
+	t_data		img;
+	t_coords	coords;
 
-	x = 0;
-	y = 0;
+	coords.x_coord = 15;
+	coords.y_coord = 15;
 	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
-	img.img = mlx_new_image(mlx, 1920, 1080);
+	mlx_win = mlx_new_window(mlx, 1600, 900, "FdF");
+	img.img = mlx_new_image(mlx, 1600, 900);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
 			&img.endian);
-	while (x++ < 1919 && y++ < 1079)
-		my_mlx_pixel_put(&img, x, y, 0x00FF0000);
-	x = 1919;
-	y = 1079;
-	while (x-- > 0 && y-- > 0)
-		my_mlx_pixel_put(&img, x, y, 0x0012faff);
+	draw_square(&img, &coords, 500, SQUARE_COLOR);
 	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
 	mlx_loop(mlx);
 }
