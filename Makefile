@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+         #
+#    By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/14 18:07:59 by mshehata          #+#    #+#              #
-#    Updated: 2023/01/24 16:10:52 by m_kamal          ###   ########.fr        #
+#    Updated: 2023/01/25 14:11:38 by mshehata         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ LIBFT =	./libft/srcs/ft_split.c ./libft/srcs/ft_atoi.c ./libft/srcs/ft_bzero.c .
 		./libft/srcs/ft_substr.c ./libft/srcs/ft_memset.c ./libft/srcs/ft_putchar_fd.c ./libft/srcs/ft_putnbr_fd.c ./libft/srcs/ft_putstr_fd.c\
 		./libft/srcs/ft_strdup.c ./libft/srcs/ft_strlcat.c ./libft/srcs/ft_strlcpy.c ./libft/srcs/ft_strnstr.c ./libft/srcs/ft_strtrim.c\
 
-SRCS = ./sources/main.c
+SRCS = ./sources/main.c ./sources/square.c ./sources/hooks.c\
 
 OFILES = $(LIBFT:.c=.o) $(SRCS:.c=.o)
 
@@ -31,13 +31,13 @@ FLAGS = -Wall -Wextra -Werror -g #remove -g before submission
 
 RM = rm -f
 
-all :	$(LINUX)
+all :	$(MAC)
 
-$(LINUX):	ANNOUNCE $(OFILES)
-	$(CC) $(OFILES) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(LINUX)
+#$(LINUX):	ANNOUNCE $(OFILES)
+#	$(CC) $(OFILES) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(LINUX)
 
-#$(MAC):	ANNOUNCE $(OFILES)
-#	$(CC) $(OFILES) -Lmlx_mac -lmlx -framework OpenGL -framework AppKit -o $(MAC)
+$(MAC):	ANNOUNCE $(OFILES)
+	$(CC) $(OFILES) -Lmlx_mac -lmlx -framework OpenGL -framework AppKit -o $(MAC)
 
 ANNOUNCE:
 	@echo "\033[0;33mCompiling FdF..."
@@ -48,10 +48,10 @@ clean:
 
 fclean: clean
 	@echo "\033[31mRemoving FdF"
-	@$(RM) $(LINUX)
+	@$(RM) $(MAC)
 
 re: fclean all
 
-.SILENT: $(LINUX) $(OFILES)
+.SILENT: $(MAC) $(OFILES)
 
 .PHONY: all clean fclean re

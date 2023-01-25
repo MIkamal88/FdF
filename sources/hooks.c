@@ -1,19 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color.h                                            :+:      :+:    :+:   */
+/*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/20 15:15:43 by m_kamal           #+#    #+#             */
-/*   Updated: 2023/01/25 13:06:01 by mshehata         ###   ########.fr       */
+/*   Created: 2023/01/25 13:45:46 by mshehata          #+#    #+#             */
+/*   Updated: 2023/01/25 14:44:50 by mshehata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COLOR_H
-# define COLOR_H
+#include "../includes/fdf.h"
+#include "../includes/color.h"
 
-# define TEXT_COLOR		0xEBBEFF
-# define SQUARE_COLOR	0xEB2828
+int	exit_window(t_win *window)
+{
+	if (window)
+		mlx_destroy_window (window->mlx, window->mlx_win);
+	exit(EXIT_SUCCESS);
+}
 
-#endif
+int	exit_window2(int key, t_win *window)
+{
+	if (window)
+		mlx_destroy_window (window->mlx, window->mlx_win);
+	exit(EXIT_SUCCESS);
+}
