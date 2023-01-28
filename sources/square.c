@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   square.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+        */
+/*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 13:07:13 by mshehata          #+#    #+#             */
-/*   Updated: 2023/01/25 13:29:59 by mshehata         ###   ########.fr       */
+/*   Updated: 2023/01/27 09:52:10 by m_kamal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,24 @@
 
 void	draw_square(t_img *data, t_coords *dimns, int len, int color)
 {
-	while (dimns->x_coord <= len)
+	while (dimns->x <= len)
 	{
-		pixel_put(data, dimns->x_coord, dimns->y_coord, color);
-		dimns->x_coord++;
+		pixel_put(data, dimns->x, dimns->y, color);
+		dimns->x++;
 	}
-	while (dimns->y_coord <= len)
+	while (dimns->y <= len)
 	{
-		pixel_put(data, dimns->x_coord, dimns->y_coord, color);
-		dimns->y_coord++;
+		pixel_put(data, dimns->x, dimns->y, color);
+		dimns->y++;
 	}
-	while (dimns->x_coord >= 15)
+	while (dimns->x >= 15)
 	{
-		pixel_put(data, dimns->x_coord, dimns->y_coord, color);
-		dimns->x_coord--;
+		pixel_put(data, dimns->x, dimns->y, color);
+		dimns->x--;
 	}
-	while (dimns->y_coord >= 15)
+	while (dimns->y >= 15)
 	{
-		pixel_put(data, dimns->x_coord, dimns->y_coord, color);
-		dimns->y_coord--;
+		pixel_put(data, dimns->x, dimns->y, color);
+		dimns->y--;
 	}
 }
