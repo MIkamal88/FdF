@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 18:29:26 by mshehata          #+#    #+#             */
-/*   Updated: 2023/01/27 09:19:01 by m_kamal          ###   ########.fr       */
+/*   Updated: 2023/01/28 13:34:08 by mshehata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ typedef struct s_window
 {
 	void	*mlx;
 	void	*mlx_win;
-	int		height;
 	int		width;
+	int		height;
 }	t_win;
 
 typedef struct s_img
@@ -31,8 +31,8 @@ typedef struct s_img
 	t_win	win;
 	void	*img_ptr;
 	char	*addr;
-	int		h;
 	int		w;
+	int		h;
 	int		bpp;
 	int		endian;
 	int		line_length;
@@ -51,8 +51,11 @@ typedef struct s_line {
 t_img	new_img(int w, int h, t_win window);
 void	pixel_put(t_img *data, int x, int y, int color);
 void	draw_line(t_img *img, t_line line, int color);
+void	swap_base_x(t_coords *p0, t_coords *p1);
+void	swap_base_y(t_coords *p0, t_coords *p1);
 void	draw_square(t_img *data, t_coords *dimns, int len, int color);
 int		exit_window(t_win *window);
 int		key_parse(int key, t_win *window);
+void	err_hndl(char *err);
 
 #endif
