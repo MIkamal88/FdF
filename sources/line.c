@@ -6,7 +6,7 @@
 /*   By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 21:07:04 by mshehata          #+#    #+#             */
-/*   Updated: 2023/01/30 22:33:50 by mshehata         ###   ########.fr       */
+/*   Updated: 2023/01/30 22:55:11 by mshehata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ static void	plotline_low(t_img *img, t_line line, int color)
 		}
 		else
 			line.decision = line.decision + 2 * line.dy;
+		pixel.x++;
 	}
 }
 
@@ -86,6 +87,7 @@ static void	plotline_high(t_img *img, t_line line, int color)
 		}
 		else
 			line.decision = line.decision + 2 * line.dx;
+		pixel.y++;
 	}
 }
 
