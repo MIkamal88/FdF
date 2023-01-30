@@ -6,7 +6,7 @@
 /*   By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 18:29:26 by mshehata          #+#    #+#             */
-/*   Updated: 2023/01/28 13:34:08 by mshehata         ###   ########.fr       */
+/*   Updated: 2023/01/30 10:14:58 by mshehata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 # include "../libft/includes/libft.h"
 # include "../libft/includes/get_next_line.h"
-# include "../mlx_linux/mlx.h"
-// # include "../mlx_mac/mlx.h"
+// # include "../mlx_linux/mlx.h"
+# include "../mlx_mac/mlx.h"
 
 typedef struct s_window
 {
@@ -46,6 +46,11 @@ typedef struct s_coords {
 typedef struct s_line {
 	t_coords	start;
 	t_coords	end;
+	int			dx;
+	int			dy;
+	int			s1;
+	int			s2;
+	int			decision;
 }	t_line;
 
 t_img	new_img(int w, int h, t_win window);

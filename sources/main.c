@@ -6,7 +6,7 @@
 /*   By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 10:01:35 by mshehata          #+#    #+#             */
-/*   Updated: 2023/01/28 14:19:09 by mshehata         ###   ########.fr       */
+/*   Updated: 2023/01/30 12:22:36 by mshehata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,6 @@ t_img	new_img(int w, int h, t_win window)
 int	main(void)
 {
 	t_win		fdf;
-	// t_img		img;
-	// t_img		img2;
 	t_img		img3;
 	t_coords	p0;
 	t_coords	p1;
@@ -60,22 +58,15 @@ int	main(void)
 
 	p0.x = 10;
 	p0.y = 10;
-	p1.x = 450;
-	p1.y = 150;
+	p1.x = 550;
+	p1.y = 550;
 	line.start = p0;
 	line.end = p1;
-
 	fdf = new_window(1920, 1080, "FdF");
 	if (!fdf.mlx || !fdf.mlx_win)
 		exit(EXIT_FAILURE);
-	// img = new_img(300, 300, fdf);
-	// img2 = new_img(100, 100, fdf);
 	img3 = new_img(1920, 1080, fdf);
-	// draw_square(&img, &p0, 200, SQUARE_COLOR);
-	// draw_square(&img2, &p0, 50, TEXT_COLOR);
 	draw_line(&img3, line, TEXT_COLOR);
-	// mlx_put_image_to_window(fdf.mlx, fdf.mlx_win, img.img_ptr, 0, 0);
-	// mlx_put_image_to_window(fdf.mlx, fdf.mlx_win, img2.img_ptr, 202, 202);
 	mlx_put_image_to_window(fdf.mlx, fdf.mlx_win, img3.img_ptr, 0, 0);
 	mlx_hook(fdf.mlx_win, 17, 0, exit_window, &fdf);
 	mlx_key_hook(fdf.mlx_win, key_parse, &fdf);
