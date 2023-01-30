@@ -6,7 +6,7 @@
 /*   By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 21:07:04 by mshehata          #+#    #+#             */
-/*   Updated: 2023/01/30 22:55:11 by mshehata         ###   ########.fr       */
+/*   Updated: 2023/01/30 23:52:26 by mshehata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	ft_abs(int n)
 	return (n);
 }
 
-static void	swap_base(t_coords *p0, t_coords *p1)
+static void	swap_points(t_coords *p0, t_coords *p1)
 {
 	int	tmp;
 	int	tmp2;
@@ -99,7 +99,7 @@ void	draw_line(t_img *img, t_line line, int color)
 	{
 		if (line.start.x > line.end.x)
 		{
-			swap_base(&line.start, &line.end);
+			swap_points(&line.start, &line.end);
 			plotline_low(img, line, color);
 		}
 		else
@@ -109,7 +109,7 @@ void	draw_line(t_img *img, t_line line, int color)
 	{
 		if (line.start.y > line.end.y)
 		{
-			swap_base(&line.start, &line.end);
+			swap_points(&line.start, &line.end);
 			plotline_high(img, line, color);
 		}
 		else

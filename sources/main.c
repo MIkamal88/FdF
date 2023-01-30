@@ -6,7 +6,7 @@
 /*   By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 10:01:35 by mshehata          #+#    #+#             */
-/*   Updated: 2023/01/30 22:57:56 by mshehata         ###   ########.fr       */
+/*   Updated: 2023/01/30 23:54:09 by mshehata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ int	main(void)
 	t_coords	p1;
 	t_line		line;
 
-	p0.x = 450;
-	p0.y = 540;
+	p0.x = 740;
+	p0.y = 940;
 	p1.x = 50;
 	p1.y = 50;
 	line.start = p0;
