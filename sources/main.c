@@ -6,7 +6,7 @@
 /*   By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 10:01:35 by mshehata          #+#    #+#             */
-/*   Updated: 2023/01/30 12:22:36 by mshehata         ###   ########.fr       */
+/*   Updated: 2023/01/30 22:32:09 by mshehata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	pixel_put(t_img *data, int x, int y, int color)
 {
 	char	*dst;
 
-	if (y > data->h || x > data->w)
+	if (y > data->h || x > data->w || x < 0 || y < 0)
 		err_hndl("Pixel is out of image frame");
 	dst = data->addr + (y * data->line_length + x * (data->bpp / 8));
 	*(unsigned int *)dst = color;

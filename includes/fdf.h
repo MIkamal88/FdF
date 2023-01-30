@@ -6,7 +6,7 @@
 /*   By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 18:29:26 by mshehata          #+#    #+#             */
-/*   Updated: 2023/01/30 10:14:58 by mshehata         ###   ########.fr       */
+/*   Updated: 2023/01/30 21:48:22 by mshehata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,16 +48,13 @@ typedef struct s_line {
 	t_coords	end;
 	int			dx;
 	int			dy;
-	int			s1;
-	int			s2;
 	int			decision;
 }	t_line;
 
 t_img	new_img(int w, int h, t_win window);
 void	pixel_put(t_img *data, int x, int y, int color);
 void	draw_line(t_img *img, t_line line, int color);
-void	swap_base_x(t_coords *p0, t_coords *p1);
-void	swap_base_y(t_coords *p0, t_coords *p1);
+int		ft_abs(int n);
 void	draw_square(t_img *data, t_coords *dimns, int len, int color);
 int		exit_window(t_win *window);
 int		key_parse(int key, t_win *window);
