@@ -6,13 +6,13 @@
 /*   By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 15:18:24 by mshehata          #+#    #+#             */
-/*   Updated: 2023/01/15 10:23:38 by mshehata         ###   ########.fr       */
+/*   Updated: 2023/01/31 07:41:59 by mshehata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/get_next_line.h"
 
-char	*join_line(char *buffer, char *buf)
+static char	*join_line(char *buffer, char *buf)
 {
 	char	*temp;
 
@@ -21,7 +21,7 @@ char	*join_line(char *buffer, char *buf)
 	return (temp);
 }
 
-char	*ft_next(char *buffer)
+static char	*ft_next(char *buffer)
 {
 	int		i;
 	int		j;
@@ -44,7 +44,7 @@ char	*ft_next(char *buffer)
 	return (line);
 }
 
-char	*ft_line(char *buffer)
+static char	*ft_line(char *buffer)
 {
 	char	*line;
 	int		i;
@@ -66,7 +66,7 @@ char	*ft_line(char *buffer)
 	return (line);
 }
 
-char	*read_file(int fd, char *res)
+static char	*read_file(int fd, char *res)
 {
 	char	*buffer;
 	int		byte_read;
