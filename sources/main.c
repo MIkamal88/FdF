@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+        */
+/*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 10:01:35 by mshehata          #+#    #+#             */
-/*   Updated: 2023/01/31 16:27:51 by mshehata         ###   ########.fr       */
+/*   Updated: 2023/02/03 01:01:20 by m_kamal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,11 @@ t_img	new_img(int w, int h, t_win window)
 int	main(int argc, char **argv)
 {
 	t_win		fdf;
-	t_img		img3;
-	t_coords	p0;
-	t_coords	p1;
+	t_img		img;
+	t_pixel		p0;
+	t_pixel		p1;
 	t_line		line;
-	char		*map_line;
-	int			x_total = 0;
-	int			y_total;
+	t_mapsize	map;
 
 	if (argc != 2)
 		err_hndl("Please enter a valid map path");
@@ -69,17 +67,14 @@ int	main(int argc, char **argv)
 		p1.y = 50;
 		line.start = p0;
 		line.end = p1;
-		map_line = map_read_line(argv[1]);
-		x_total = x_elements(map_line);
-		y_total = y_elements(argv[1]);
-		// fdf = new_window(1920, 1080, "FdF");
-		// if (!fdf.mlx || !fdf.mlx_win)
-		// 	exit(EXIT_FAILURE);
-		// img3 = new_img(1920, 1080, fdf);
-		// draw_line(&img3, line, TEXT_COLOR);
-		// mlx_put_image_to_window(fdf.mlx, fdf.mlx_win, img3.img_ptr, 0, 0);
-		// mlx_hook(fdf.mlx_win, 17, 0, exit_window, &fdf);
-		// mlx_key_hook(fdf.mlx_win, key_parse, &fdf);
-		// mlx_loop(fdf.mlx);
+		map = map_read(argv[1]);
+		printf("X = %d\nY = %d\n", map.x, map.y);
+		fdf = new_window(1920, 1080, "FdF");
+		img = new_img(1920, 1080, fdf);
+		draw_line(&img, line, TEXT_COLOR);
+		mlx_put_image_to_window(fdf.mlx, fdf.mlx_win, img.img_ptr, 0, 0);
+		mlx_hook(fdf.mlx_win, 17, 0, exit_window, &fdf);
+		mlx_key_hook(fdf.mlx_win, key_parse, &fdf);
+		mlx_loop(fdf.mlx);
 	}
 }

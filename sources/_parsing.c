@@ -1,54 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   _parsing.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+        */
+/*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 07:40:41 by mshehata          #+#    #+#             */
-/*   Updated: 2023/01/31 16:25:14 by mshehata         ###   ########.fr       */
+/*   Updated: 2023/02/02 18:45:43 by m_kamal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 #include "../includes/color.h"
 
-char	*map_read_line(char *map)
+t_pixel	x_elements(char *line)
 {
-	int		fd;
-	char	*line1;
-
-	fd = open(map, O_RDONLY);
-	line1 = get_next_line(fd);
-	close(fd);
-	return (line1);
-}
-
-int	x_elements(char *line)
-{
-	char	**x_coords;
-	int		*x;
+	t_pixel	pixel;
+	char	**x_total;
+	int		*n;
 	int		i;
 
 	i = 0;
-	x_coords = ft_split(line, ' ');
-	while (x_coords[i])
+	x_total = ft_split(line, ' ');
+	while (x_total[i])
 	{
-		x[i] = ft_atoi(x_coords[i]);
+		n[i] = ft_atoi(x_total[i]);
+		if (n[i] != 0)
+		{
+			pixel.x = i * 10;
+			pixel.z = n[i];
+		}
+		else
+		{
+			pixel.x = i * 10;
+			pixel.z = 0;
+		}
 		i++;
 	}
 	free(line);
-	return (i);
+	return (pixel);
 }
 
-int	y_elements(char *map)
+t_pixel	y_elements(char *map, int fd)
 {
-	int		fd;
 	char	*line;
 	int		i;
 
 	i = 0;
-	fd = open(map, O_RDONLY);
 	line = get_next_line(fd);
 	while (line)
 	{
@@ -56,6 +54,24 @@ int	y_elements(char *map)
 		i++;
 	}
 	free(line);
-	close(fd);
 	return (i);
+}
+
+t_mapsize	map_read(char *map_path)
+{
+	int		fd;
+	char	*line;
+	t_pixel	pixel;
+	int		x_max;
+	int		y_max;
+
+	fd = open(map_path, O_RDONLY);
+	if (!line)
+		line = get_next_line(fd);
+	x_max = 
+	while (line)
+	{
+
+	}
+	close(fd);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+        */
+/*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 21:07:04 by mshehata          #+#    #+#             */
-/*   Updated: 2023/01/30 23:52:26 by mshehata         ###   ########.fr       */
+/*   Updated: 2023/02/02 12:03:05 by m_kamal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	ft_abs(int n)
 	return (n);
 }
 
-static void	swap_points(t_coords *p0, t_coords *p1)
+static void	swap_points(t_pixel *p0, t_pixel *p1)
 {
 	int	tmp;
 	int	tmp2;
@@ -35,8 +35,8 @@ static void	swap_points(t_coords *p0, t_coords *p1)
 
 static void	plotline_low(t_img *img, t_line line, int color)
 {
-	t_coords	pixel;
-	int			yi;
+	t_pixel	pixel;
+	int		yi;
 
 	pixel = line.start;
 	line.dx = line.end.x - line.start.x;
@@ -64,8 +64,8 @@ static void	plotline_low(t_img *img, t_line line, int color)
 
 static void	plotline_high(t_img *img, t_line line, int color)
 {
-	t_coords	pixel;
-	int			xi;
+	t_pixel	pixel;
+	int		xi;
 
 	pixel = line.start;
 	line.dx = line.end.x - line.start.x;
