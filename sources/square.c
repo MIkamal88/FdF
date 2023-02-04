@@ -6,33 +6,34 @@
 /*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 13:07:13 by mshehata          #+#    #+#             */
-/*   Updated: 2023/02/02 12:02:30 by m_kamal          ###   ########.fr       */
+/*   Updated: 2023/02/03 14:07:26 by m_kamal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 #include "../includes/color.h"
 
-void	draw_square(t_img *data, t_pixel *dimns, int len, int color)
+void	draw_grid(t_img *img, t_mapsize map)
 {
-	while (dimns->x <= len)
+	t_pixel	p0;
+	t_pixel	p1;
+	t_line	line;
+
+	p0.x = 10;
+	p0.y = 10;
+	p1.x = p0.x;
+	p1.y = p0.y;
+	line.start = p0;
+	line.end = p1;
+	while (p1.x <= map.x)
 	{
-		pixel_put(data, dimns->x, dimns->y, color);
-		dimns->x++;
-	}
-	while (dimns->y <= len)
-	{
-		pixel_put(data, dimns->x, dimns->y, color);
-		dimns->y++;
-	}
-	while (dimns->x >= 15)
-	{
-		pixel_put(data, dimns->x, dimns->y, color);
-		dimns->x--;
-	}
-	while (dimns->y >= 15)
-	{
-		pixel_put(data, dimns->x, dimns->y, color);
-		dimns->y--;
+		while (map.x % p1.x == 0)
+		{
+			line.start = p0;
+			line.end = p1;
+			draw_line(img, line, TEXT_COLOR);
+			p1.y += 10;
+		}
+		p1.x += 10;
 	}
 }

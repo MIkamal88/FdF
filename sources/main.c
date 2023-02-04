@@ -6,7 +6,7 @@
 /*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 10:01:35 by mshehata          #+#    #+#             */
-/*   Updated: 2023/02/03 01:01:20 by m_kamal          ###   ########.fr       */
+/*   Updated: 2023/02/03 01:36:59 by m_kamal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,17 +61,17 @@ int	main(int argc, char **argv)
 		err_hndl("Please enter a valid map path");
 	else
 	{
-		p0.x = 740;
-		p0.y = 940;
-		p1.x = 50;
-		p1.y = 50;
+		p0.x = 40;
+		p0.y = 40;
+		p1.x = 40;
+		p1.y = 40;
 		line.start = p0;
 		line.end = p1;
 		map = map_read(argv[1]);
 		printf("X = %d\nY = %d\n", map.x, map.y);
 		fdf = new_window(1920, 1080, "FdF");
 		img = new_img(1920, 1080, fdf);
-		draw_line(&img, line, TEXT_COLOR);
+		draw_grid(&img, map);
 		mlx_put_image_to_window(fdf.mlx, fdf.mlx_win, img.img_ptr, 0, 0);
 		mlx_hook(fdf.mlx_win, 17, 0, exit_window, &fdf);
 		mlx_key_hook(fdf.mlx_win, key_parse, &fdf);
