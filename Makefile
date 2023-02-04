@@ -6,7 +6,7 @@
 #    By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/14 18:07:59 by mshehata          #+#    #+#              #
-#    Updated: 2023/01/31 07:52:38 by mshehata         ###   ########.fr        #
+#    Updated: 2023/02/04 16:52:34 by mshehata         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ LIBFT =	./libft/srcs/ft_split.c ./libft/srcs/ft_atoi.c ./libft/srcs/ft_bzero.c .
 		./libft/srcs/ft_substr.c ./libft/srcs/ft_memset.c ./libft/srcs/ft_putchar_fd.c ./libft/srcs/ft_putnbr_fd.c ./libft/srcs/ft_putstr_fd.c\
 		./libft/srcs/ft_strdup.c ./libft/srcs/ft_strlcat.c ./libft/srcs/ft_strlcpy.c ./libft/srcs/ft_strnstr.c ./libft/srcs/ft_strtrim.c\
 
-SRCS = ./sources/main.c ./sources/square.c ./sources/hooks.c ./sources/line.c ./sources/errors.c ./sources/utils.c ./sources/parsing.c\
+SRCS = ./sources/main.c ./sources/square.c ./sources/hooks.c ./sources/line.c ./sources/errors.c ./sources/utils.c ./sources/map_size.c\
 
 OFILES = $(LIBFT:.c=.o) $(SRCS:.c=.o)
 
@@ -55,3 +55,15 @@ re: fclean all
 .SILENT: $(MAC) $(OFILES)
 
 .PHONY: all clean fclean re
+
+#ifeq ($(shell uname -s), Linux)
+#	MLX_DIR		=	minilibx_linux
+#	MLX			=	libmlx_Linux.a
+#	LINK_MLX	=	-I$(MLX_DIR) -L$(MLX_DIR) -lmlx_Linux -lXext -lX11 -lm -lz
+#endif
+
+#ifeq ($(shell uname -s), Darwin)
+#	MLX_DIR		=	minilibx_mac
+#	MLX			=	libmlx.a
+#	LINK_MLX	=	-L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
+#endif
