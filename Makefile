@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+         #
+#    By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/14 18:07:59 by mshehata          #+#    #+#              #
-#    Updated: 2023/02/04 16:52:34 by mshehata         ###   ########.fr        #
+#    Updated: 2023/02/04 20:40:04 by m_kamal          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,13 +31,13 @@ FLAGS = -Wall -Wextra -Werror #remove -g before submission
 
 RM = rm -f
 
-all :	$(MAC)
+all :	$(LINUX)
 
-#$(LINUX):	ANNOUNCE $(OFILES)
-#	$(CC) $(FLAGS) $(OFILES) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(LINUX)
+$(LINUX):	ANNOUNCE $(OFILES)
+	$(CC) $(FLAGS) $(OFILES) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(LINUX)
 
-$(MAC):	ANNOUNCE $(OFILES)
-	$(CC) $(FLAGS) $(OFILES) -Lmlx_mac -lmlx -framework OpenGL -framework AppKit -o $(MAC)
+#$(MAC):	ANNOUNCE $(OFILES)
+#	$(CC) $(FLAGS) $(OFILES) -Lmlx_mac -lmlx -framework OpenGL -framework AppKit -o $(MAC)
 
 ANNOUNCE:
 	@echo "\033[0;33mCompiling FdF..."
@@ -48,11 +48,11 @@ clean:
 
 fclean: clean
 	@echo "\033[31mRemoving FdF"
-	@$(RM) $(MAC)
+	@$(RM) $(LINUX)
 
 re: fclean all
 
-.SILENT: $(MAC) $(OFILES)
+.SILENT: $(LINUX) $(OFILES)
 
 .PHONY: all clean fclean re
 

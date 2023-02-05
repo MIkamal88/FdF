@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   square.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+        */
+/*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 13:07:13 by mshehata          #+#    #+#             */
-/*   Updated: 2023/02/04 18:33:11 by mshehata         ###   ########.fr       */
+/*   Updated: 2023/02/05 19:20:20 by m_kamal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 #include "../includes/color.h"
 
-void	draw_grid(t_img *img, t_mapsize map, int step)
+void	draw_grid(t_img *img, t_map map, int step)
 {
 	t_pixel	p0;
 	t_pixel	p1;
@@ -22,13 +22,14 @@ void	draw_grid(t_img *img, t_mapsize map, int step)
 	p0.x = step;
 	p0.y = step;
 	p1 = p0;
-	while (p1.x <= (map.x * step))
+	while (p1.x <= (map.x_max * step))
 	{
 		p1.x += step;
+		p1.y = (map.y_max * step);
 		line.start = p0;
 		line.end = p1;
 		draw_line(img, line, TEXT_COLOR);
-		// while loop for y here
+		p1.y = step;
 		p0 = p1;
 	}
 	p1.y += step;

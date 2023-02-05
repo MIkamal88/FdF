@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+        */
+/*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 10:01:35 by mshehata          #+#    #+#             */
-/*   Updated: 2023/02/04 17:45:29 by mshehata         ###   ########.fr       */
+/*   Updated: 2023/02/05 19:19:49 by m_kamal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,17 +50,17 @@ t_img	new_img(int w, int h, t_win window)
 
 int	main(int argc, char **argv)
 {
-	t_win		fdf;
-	t_img		img;
-	t_line		line;
-	t_mapsize	map;
+	t_win	fdf;
+	t_img	img;
+	t_line	line;
+	t_map	map;
 
 	if (argc != 2)
 		err_hndl("Please enter a valid map path");
 	else
 	{
 		map = map_read(argv[1]);
-		printf("X = %d\nY = %d\n", map.x, map.y);
+		printf("X = %d\nY = %d\n", map.x_max, map.y_max);
 		fdf = new_window(1920, 1080, "FdF");
 		img = new_img(1920, 1080, fdf);
 		draw_grid(&img, map, 20);

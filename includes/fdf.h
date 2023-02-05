@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+        */
+/*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 18:29:26 by mshehata          #+#    #+#             */
-/*   Updated: 2023/02/04 17:34:35 by mshehata         ###   ########.fr       */
+/*   Updated: 2023/02/05 19:21:03 by m_kamal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,12 @@ typedef struct s_line {
 	int		decision;
 }	t_line;
 
-typedef struct s_mapsize {
-	int	x;
-	int	y;
-}	t_mapsize;
+typedef struct s_map {
+	t_pixel	**coordinates;
+	int		x_max;
+	int		y_max;
+	int		z_max;
+}	t_map;
 
 typedef struct s_y_width {
 	char	*line;
@@ -64,7 +66,7 @@ typedef struct s_y_width {
 
 t_img		new_img(int w, int h, t_win window);
 void		pixel_put(t_img *data, int x, int y, int color);
-t_mapsize	map_read(char *map);
+t_map		map_read(char *map);
 int			get_width(char *line);
 t_y_width	get_height(char *map, int fd);
 // t_pixel		x_elements(char *line);
@@ -73,7 +75,7 @@ t_y_width	get_height(char *map, int fd);
 // int			get_height(char *map);
 void		draw_line(t_img *img, t_line line, int color);
 int			ft_abs(int n);
-void		draw_grid(t_img *img, t_mapsize map, int step);
+void		draw_grid(t_img *img, t_map map, int step);
 // void		draw_square(t_img *data, t_pixel *dimns, int len, int color);
 int			exit_window(t_win *window);
 int			key_parse(int key, t_win *window);
