@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   square.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 13:07:13 by mshehata          #+#    #+#             */
-/*   Updated: 2023/02/05 19:20:20 by m_kamal          ###   ########.fr       */
+/*   Updated: 2023/02/06 13:13:50 by mshehata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,23 @@ void	draw_grid(t_img *img, t_map map, int step)
 	p0.x = step;
 	p0.y = step;
 	p1 = p0;
-	while (p1.x <= (map.x_max * step))
+	line.start = p0;
+	line.end = p1;
+	while (line.start.y <= (map.y_max - 1) * step)
 	{
-		p1.x += step;
-		p1.y = (map.y_max * step);
-		line.start = p0;
-		line.end = p1;
-		draw_line(img, line, TEXT_COLOR);
-		p1.y = step;
-		p0 = p1;
+		while (p1.x <= (map.x_max * step))
+		{
+			p1.x = p0.x + step;
+			draw_line(img, p0, p1, TEXT_COLOR);
+			line.start = p0;
+			line.end.y += step;
+			draw_line(img, line.start, line.end, TEXT_COLOR);
+			p0 = p1;
+		}
+		p0.y += step;
+		p0.x = step;
+		p1 = p0;
 	}
-	p1.y += step;
 }
 
 // for (j = 0; j < NUM_ROWS; j++)
@@ -43,3 +49,10 @@ void	draw_grid(t_img *img, t_map map, int step)
 //    }
 //    printf("\n");
 // }
+		// p1.x += step;
+		// p1.y = (map.y_max * step);
+		// line.start = p0;
+		// line.end = p1;
+		// draw_line(img, line, TEXT_COLOR);
+		// p1.y = step;
+		// p0 = p1;

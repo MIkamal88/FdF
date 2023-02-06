@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 18:29:26 by mshehata          #+#    #+#             */
-/*   Updated: 2023/02/05 19:21:03 by m_kamal          ###   ########.fr       */
+/*   Updated: 2023/02/06 14:41:18 by mshehata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 
 # include "../libft/includes/libft.h"
 # include "../libft/includes/get_next_line.h"
-# include "../mlx_linux/mlx.h"
-// # include "../mlx_mac/mlx.h"
+// # include "../mlx_linux/mlx.h"
+# include "../mlx_mac/mlx.h"
 
-typedef struct s_window
+typedef struct s_win
 {
 	void	*mlx;
 	void	*mlx_win;
@@ -53,7 +53,7 @@ typedef struct s_line {
 }	t_line;
 
 typedef struct s_map {
-	t_pixel	**coordinates;
+	t_pixel	**matrix;
 	int		x_max;
 	int		y_max;
 	int		z_max;
@@ -68,12 +68,13 @@ t_img		new_img(int w, int h, t_win window);
 void		pixel_put(t_img *data, int x, int y, int color);
 t_map		map_read(char *map);
 int			get_width(char *line);
-t_y_width	get_height(char *map, int fd);
+t_y_width	get_height(int fd);
+t_pixel		**init_coords(int height, int width);
 // t_pixel		x_elements(char *line);
 // t_pixel		y_elements(char *map, int fd);
 // int			get_width(char *line);
 // int			get_height(char *map);
-void		draw_line(t_img *img, t_line line, int color);
+void		draw_line(t_img *img, t_pixel p0, t_pixel p1, int color);
 int			ft_abs(int n);
 void		draw_grid(t_img *img, t_map map, int step);
 // void		draw_square(t_img *data, t_pixel *dimns, int len, int color);

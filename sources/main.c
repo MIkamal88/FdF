@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 10:01:35 by mshehata          #+#    #+#             */
-/*   Updated: 2023/02/05 19:19:49 by m_kamal          ###   ########.fr       */
+/*   Updated: 2023/02/06 15:16:30 by mshehata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,16 +54,29 @@ int	main(int argc, char **argv)
 	t_img	img;
 	t_line	line;
 	t_map	map;
+	int		i;
+	int		j;
 
+	i = 0;
+	j = 0;
 	if (argc != 2)
 		err_hndl("Please enter a valid map path");
 	else
 	{
 		map = map_read(argv[1]);
 		printf("X = %d\nY = %d\n", map.x_max, map.y_max);
+		while (i < map.x_max)
+		{
+			while (j < map.y_max)
+			{
+				printf("pix.X = %d\npix.Y = %d\n", map.matrix[i][j].x, map.matrix[i][j].y);
+				j++;
+			}
+			i++;
+		}
 		fdf = new_window(1920, 1080, "FdF");
 		img = new_img(1920, 1080, fdf);
-		draw_grid(&img, map, 20);
+		draw_grid(&img, map, 30);
 		mlx_put_image_to_window(fdf.mlx, fdf.mlx_win, img.img_ptr, 0, 0);
 		mlx_hook(fdf.mlx_win, 17, 0, exit_window, &fdf);
 		mlx_key_hook(fdf.mlx_win, key_parse, &fdf);

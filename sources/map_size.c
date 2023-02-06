@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_size.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 07:40:41 by mshehata          #+#    #+#             */
-/*   Updated: 2023/02/05 19:23:35 by m_kamal          ###   ########.fr       */
+/*   Updated: 2023/02/06 14:38:48 by mshehata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,12 @@ t_map	map_read(char *file_name)
 	fd = open(file_name, O_RDONLY);
 	if (fd < 0)
 		err_hndl("Invalid map file descriptor");
-	last_line = get_height(file_name, fd);
+	last_line = get_height(fd);
 	map.x_max = get_width(last_line.line);
 	map.y_max = last_line.y;
 	close(fd);
 	free(last_line.line);
+	map.matrix = init_coords(map.y_max, map.x_max);
 	return (map);
 }
 
@@ -49,7 +50,7 @@ int	get_width(char *line)
 	return (i);
 }
 
-t_y_width	get_height(char *map, int fd)
+t_y_width	get_height(int fd)
 {
 	char		*line1;
 	char		*line;
@@ -70,30 +71,8 @@ t_y_width	get_height(char *map, int fd)
 	return (y_total);
 }
 
-t_pixel	**init_coords(int height, int width)
-{
-	t_pixel	**coordinates;
-	int		i;
-	int		j;
-
-	coordinates = malloc(width * sizeof(t_pixel *));
-	i = 0;
-	if (!coordinates)
-		return (NULL);
-	while (i < width)
-	{
-		coordinates[i] = malloc(height * sizeof(t_pixel));
-		if (!coordinates)
-			return (NULL);
-		j = 0;
-		while (j < height)
-		{
-			coordinates[i][j].x = 0;
-			coordinates[i][j].y = 0;
-			coordinates[i][j].z = 0;
-			j++;
-		}
-		i++;
-	}
-	return (coordinates);
-}
+/*
+1. Open fd
+2. .
+3.
+*/
