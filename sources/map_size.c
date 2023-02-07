@@ -6,7 +6,7 @@
 /*   By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 07:40:41 by mshehata          #+#    #+#             */
-/*   Updated: 2023/02/06 14:38:48 by mshehata         ###   ########.fr       */
+/*   Updated: 2023/02/07 14:09:21 by mshehata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_map	map_read(char *file_name)
 	map.y_max = last_line.y;
 	close(fd);
 	free(last_line.line);
-	map.matrix = init_coords(map.y_max, map.x_max);
+	map.matrix = fill_coords(map.y_max, map.x_max);
 	return (map);
 }
 
@@ -45,8 +45,10 @@ int	get_width(char *line)
 	while (x_coords[i])
 	{
 		x[i] = ft_atoi(x_coords[i]);
+		free(x_coords[i]);
 		i++;
 	}
+	free(x_coords);
 	return (i);
 }
 
@@ -58,14 +60,20 @@ t_y_width	get_height(int fd)
 	t_y_width	y_total;
 
 	i = 0;
+	line = NULL;
 	line1 = get_next_line(fd);
 	while (line1)
 	{
+		free(line1);
 		line1 = get_next_line(fd);
 		i++;
 		if (line1 != 0)
+		{
+			free(line);
 			line = ft_strdup(line1);
+		}
 	}
+	free(line1);
 	y_total.line = line;
 	y_total.y = i;
 	return (y_total);

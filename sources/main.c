@@ -6,7 +6,7 @@
 /*   By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 10:01:35 by mshehata          #+#    #+#             */
-/*   Updated: 2023/02/06 16:06:37 by mshehata         ###   ########.fr       */
+/*   Updated: 2023/02/07 13:26:14 by mshehata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,14 @@ t_win	new_window(int w, int h, char *str)
 	return ((t_win){mlx, mlx_win, w, h});
 }
 
-t_img	new_img(int w, int h, t_win window)
+t_img	new_img(int w, int h, t_win *window)
 {
 	t_img	image;
 
-	image.win = window;
-	if (h > window.height || w > window.width)
+	image.win = *window;
+	if (h > window->height || w > window->width)
 		err_hndl("Image frame is bigger than window");
-	image.img_ptr = mlx_new_image(window.mlx, w, h);
+	image.img_ptr = mlx_new_image(window->mlx, w, h);
 	image.addr = mlx_get_data_addr(image.img_ptr, &(image.bpp),
 			&(image.line_length), &(image.endian));
 	image.w = w;
@@ -65,22 +65,22 @@ int	main(int argc, char **argv)
 	{
 		map = map_read(argv[1]);
 		printf("X = %d\nY = %d\n", map.x_max, map.y_max);
-		while (j < map.y_max)
-		{
-			while (i < map.x_max)
-			{
-				printf("pix.X = %d\npix.Y = %d\n", map.matrix[i][j].x, map.matrix[i][j].y);
-				i++;
-			}
-			i = 0;
-			j++;
-		}
-		fdf = new_window(1920, 1080, "FdF");
-		img = new_img(1920, 1080, fdf);
-		// draw_grid(&img, map, 30);
-		mlx_put_image_to_window(fdf.mlx, fdf.mlx_win, img.img_ptr, 0, 0);
-		mlx_hook(fdf.mlx_win, 17, 0, exit_window, &fdf);
-		mlx_key_hook(fdf.mlx_win, key_parse, &fdf);
-		mlx_loop(fdf.mlx);
+		// while (j < map.y_max)
+		// {
+		// 	while (i < map.x_max)
+		// 	{
+		// 		printf("pix.X = %d\npix.Y = %d\n", map.matrix[i][j].x, map.matrix[i][j].y);
+		// 		i++;
+		// 	}
+		// 	i = 0;
+		// 	j++;
+		// }
+		// fdf = new_window(1920, 1080, "FdF");
+		// img = new_img(1920, 1080, &fdf);
+		// // draw_grid(&img, map, 30);
+		// mlx_put_image_to_window(fdf.mlx, fdf.mlx_win, img.img_ptr, 0, 0);
+		// mlx_hook(fdf.mlx_win, 17, 0, exit_window, &fdf);
+		// mlx_key_hook(fdf.mlx_win, key_parse, &fdf);
+		// mlx_loop(fdf.mlx);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 18:29:26 by mshehata          #+#    #+#             */
-/*   Updated: 2023/02/06 14:41:18 by mshehata         ###   ########.fr       */
+/*   Updated: 2023/02/07 14:07:02 by mshehata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,13 @@ typedef struct s_y_width {
 	int		y;
 }	t_y_width;
 
-t_img		new_img(int w, int h, t_win window);
+t_img		new_img(int w, int h, t_win *window);
 void		pixel_put(t_img *data, int x, int y, int color);
 t_map		map_read(char *map);
 int			get_width(char *line);
-t_y_width	get_height(int fd);
-t_pixel		**init_coords(int height, int width);
+int			get_height(int fd);
+t_pixel		**fill_coords(int height, int width);
+int			count_words(char const *str, char c);
 // t_pixel		x_elements(char *line);
 // t_pixel		y_elements(char *map, int fd);
 // int			get_width(char *line);

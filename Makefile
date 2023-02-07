@@ -6,7 +6,7 @@
 #    By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/14 18:07:59 by mshehata          #+#    #+#              #
-#    Updated: 2023/02/06 08:50:36 by mshehata         ###   ########.fr        #
+#    Updated: 2023/02/07 13:14:21 by mshehata         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,13 +21,13 @@ LIBFT =	./libft/srcs/ft_split.c ./libft/srcs/ft_atoi.c ./libft/srcs/ft_bzero.c .
 		./libft/srcs/ft_substr.c ./libft/srcs/ft_memset.c ./libft/srcs/ft_putchar_fd.c ./libft/srcs/ft_putnbr_fd.c ./libft/srcs/ft_putstr_fd.c\
 		./libft/srcs/ft_strdup.c ./libft/srcs/ft_strlcat.c ./libft/srcs/ft_strlcpy.c ./libft/srcs/ft_strnstr.c ./libft/srcs/ft_strtrim.c\
 
-SRCS = ./sources/main.c ./sources/square.c ./sources/hooks.c ./sources/line.c ./sources/errors.c ./sources/utils.c ./sources/map_size.c\
+SRCS = ./sources/main.c ./sources/square.c ./sources/hooks.c ./sources/line.c ./sources/errors.c ./sources/utils.c ./sources/parsing.c\
 
 OFILES = $(LIBFT:.c=.o) $(SRCS:.c=.o)
 
 CC = gcc -g3
 
-FLAGS = -Wall -Wextra -Werror #remove -g before submission
+FLAGS = -Wall -Wextra -Werror -fsanitize=address #remove -g before submission
 
 RM = rm -f
 
