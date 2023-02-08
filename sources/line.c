@@ -6,12 +6,21 @@
 /*   By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 21:07:04 by mshehata          #+#    #+#             */
-/*   Updated: 2023/02/06 11:29:11 by mshehata         ###   ########.fr       */
+/*   Updated: 2023/02/08 13:36:14 by mshehata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 #include "../includes/color.h"
+
+void	d_line(t_img *img, t_pixel p0, t_pixel p1, int color)
+{
+	t_line	line;
+
+	line.start = p0;
+	line.end = p1;
+	draw_line(img, line, color);
+}
 
 static void	swap_points(t_pixel *p0, t_pixel *p1)
 {
@@ -84,12 +93,8 @@ static void	plotline_high(t_img *img, t_line line, int color)
 	}
 }
 
-void	draw_line(t_img *img, t_pixel p0, t_pixel p1, int color)
+void	draw_line(t_img *img, t_line line, int color)
 {
-	t_line	line;
-
-	line.start = p0;
-	line.end = p1;
 	line.dx = line.end.x - line.start.x;
 	line.dy = line.end.y - line.start.y;
 	if (ft_abs(line.dy) < ft_abs(line.dx))

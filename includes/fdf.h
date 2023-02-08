@@ -6,7 +6,7 @@
 /*   By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 18:29:26 by mshehata          #+#    #+#             */
-/*   Updated: 2023/02/07 14:07:02 by mshehata         ###   ########.fr       */
+/*   Updated: 2023/02/08 13:35:01 by mshehata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ typedef struct s_map {
 	t_pixel	**matrix;
 	int		x_max;
 	int		y_max;
-	int		z_max;
 }	t_map;
 
 typedef struct s_y_width {
@@ -67,20 +66,17 @@ typedef struct s_y_width {
 t_img		new_img(int w, int h, t_win *window);
 void		pixel_put(t_img *data, int x, int y, int color);
 t_map		map_read(char *map);
-int			get_width(char *line);
 int			get_height(int fd);
-t_pixel		**fill_coords(int height, int width);
-int			count_words(char const *str, char c);
-// t_pixel		x_elements(char *line);
-// t_pixel		y_elements(char *map, int fd);
-// int			get_width(char *line);
-// int			get_height(char *map);
-void		draw_line(t_img *img, t_pixel p0, t_pixel p1, int color);
-int			ft_abs(int n);
-void		draw_grid(t_img *img, t_map map, int step);
-// void		draw_square(t_img *data, t_pixel *dimns, int len, int color);
+void		fill_coords(t_map *map, char *line, int y);
+t_pixel		**map_fill(char *file_name, t_map *map);
+int			get_z_coord(char *line, int i, int x_max);
+void		d_line(t_img *img, t_pixel p0, t_pixel p1, int color);
+void		draw_line(t_img *img, t_line line, int color);
+// void		draw_grid(t_img *img, t_map map, int step);
 int			exit_window(t_win *window);
 int			key_parse(int key, t_win *window);
+int			ft_abs(int n);
+int			count_words(char const *str, char c);
 void		err_hndl(char *err);
 
 #endif

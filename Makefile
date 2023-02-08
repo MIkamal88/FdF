@@ -6,7 +6,7 @@
 #    By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/14 18:07:59 by mshehata          #+#    #+#              #
-#    Updated: 2023/02/07 13:14:21 by mshehata         ###   ########.fr        #
+#    Updated: 2023/02/08 09:18:52 by mshehata         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ LIBFT =	./libft/srcs/ft_split.c ./libft/srcs/ft_atoi.c ./libft/srcs/ft_bzero.c .
 		./libft/srcs/ft_strdup.c ./libft/srcs/ft_strlcat.c ./libft/srcs/ft_strlcpy.c ./libft/srcs/ft_strnstr.c ./libft/srcs/ft_strtrim.c\
 
 SRCS = ./sources/main.c ./sources/square.c ./sources/hooks.c ./sources/line.c ./sources/errors.c ./sources/utils.c ./sources/parsing.c\
+		./sources/map_size.c
 
 OFILES = $(LIBFT:.c=.o) $(SRCS:.c=.o)
 

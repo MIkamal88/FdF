@@ -6,7 +6,7 @@
 /*   By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 07:40:41 by mshehata          #+#    #+#             */
-/*   Updated: 2023/02/07 14:09:21 by mshehata         ###   ########.fr       */
+/*   Updated: 2023/02/08 10:41:09 by mshehata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,72 +15,34 @@
 
 t_map	map_read(char *file_name)
 {
-	int			fd;
-	t_map		map;
-	t_y_width	last_line;
+	int		fd;
+	t_map	map;
+	char	*line;
 
 	fd = open(file_name, O_RDONLY);
 	if (fd < 0)
 		err_hndl("Invalid map file descriptor");
-	last_line = get_height(fd);
-	map.x_max = get_width(last_line.line);
-	map.y_max = last_line.y;
+	line = get_next_line(fd);
+	map.x_max = count_words(line, ' ');
+	free(line);
+	map.y_max = get_height(fd);
 	close(fd);
-	free(last_line.line);
-	map.matrix = fill_coords(map.y_max, map.x_max);
 	return (map);
 }
 
-int	get_width(char *line)
+int	get_height(int fd)
 {
-	char	**x_coords;
-	int		*x;
+	char	*line;
 	int		i;
 
-	if (!line)
-		return (0);
-	i = 0;
-	x = malloc(sizeof(int));
-	x_coords = ft_split(line, ' ');
-	while (x_coords[i])
+	i = 1;
+	line = get_next_line(fd);
+	while (line)
 	{
-		x[i] = ft_atoi(x_coords[i]);
-		free(x_coords[i]);
+		free(line);
+		line = get_next_line(fd);
 		i++;
 	}
-	free(x_coords);
+	free(line);
 	return (i);
 }
-
-t_y_width	get_height(int fd)
-{
-	char		*line1;
-	char		*line;
-	int			i;
-	t_y_width	y_total;
-
-	i = 0;
-	line = NULL;
-	line1 = get_next_line(fd);
-	while (line1)
-	{
-		free(line1);
-		line1 = get_next_line(fd);
-		i++;
-		if (line1 != 0)
-		{
-			free(line);
-			line = ft_strdup(line1);
-		}
-	}
-	free(line1);
-	y_total.line = line;
-	y_total.y = i;
-	return (y_total);
-}
-
-/*
-1. Open fd
-2. .
-3.
-*/
