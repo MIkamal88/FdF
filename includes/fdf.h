@@ -6,7 +6,7 @@
 /*   By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 18:29:26 by mshehata          #+#    #+#             */
-/*   Updated: 2023/02/08 13:35:01 by mshehata         ###   ########.fr       */
+/*   Updated: 2023/02/08 13:42:45 by mshehata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,11 @@ typedef struct s_y_width {
 
 t_img		new_img(int w, int h, t_win *window);
 void		pixel_put(t_img *data, int x, int y, int color);
-t_map		map_read(char *map);
 int			get_height(int fd);
-void		fill_coords(t_map *map, char *line, int y);
-t_pixel		**map_fill(char *file_name, t_map *map);
+t_map		map_read(char *map);
+void		fill_row(t_map *map, char *line, int y);
 int			get_z_coord(char *line, int i, int x_max);
+t_pixel		**map_fill(char *file_name, t_map *map);
 void		d_line(t_img *img, t_pixel p0, t_pixel p1, int color);
 void		draw_line(t_img *img, t_line line, int color);
 // void		draw_grid(t_img *img, t_map map, int step);

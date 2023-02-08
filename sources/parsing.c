@@ -6,7 +6,7 @@
 /*   By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 07:40:41 by mshehata          #+#    #+#             */
-/*   Updated: 2023/02/08 13:18:42 by mshehata         ###   ########.fr       */
+/*   Updated: 2023/02/08 13:42:21 by mshehata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_pixel	**map_fill(char *file_name, t_map *map)
 	while (line)
 	{
 		map->matrix[y] = malloc(sizeof(t_pixel) * map->x_max);
-		fill_coords(map, line, y);
+		fill_row(map, line, y);
 		free(line);
 		line = get_next_line(fd);
 		y++;
@@ -58,7 +58,7 @@ int	get_z_coord(char *line, int i, int x_max)
 	return (z);
 }
 
-void	fill_coords(t_map *map, char *line, int y)
+void	fill_row(t_map *map, char *line, int y)
 {
 	int	i;
 
