@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+        */
+/*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 18:29:26 by mshehata          #+#    #+#             */
-/*   Updated: 2023/02/08 13:42:45 by mshehata         ###   ########.fr       */
+/*   Updated: 2023/02/09 14:51:55 by m_kamal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,11 @@
 
 # include "../libft/includes/libft.h"
 # include "../libft/includes/get_next_line.h"
-// # include "../mlx_linux/mlx.h"
-# include "../mlx_mac/mlx.h"
+# include "../mlx_linux/mlx.h"
+# include <math.h>
+// # include "../mlx_mac/mlx.h"
+
+# define ANG_30	0.5236
 
 typedef struct s_win
 {
@@ -37,6 +40,17 @@ typedef struct s_img
 	int		endian;
 	int		line_length;
 }	t_img;
+
+typedef struct s_cam
+{
+	int	projection;
+}	t_cam;
+
+enum	e_projection
+{
+	isometric,
+	top
+};
 
 typedef struct s_pixel {
 	int	x;
@@ -63,20 +77,26 @@ typedef struct s_y_width {
 	int		y;
 }	t_y_width;
 
-t_img		new_img(int w, int h, t_win *window);
-void		pixel_put(t_img *data, int x, int y, int color);
-int			get_height(int fd);
-t_map		map_read(char *map);
-void		fill_row(t_map *map, char *line, int y);
-int			get_z_coord(char *line, int i, int x_max);
-t_pixel		**map_fill(char *file_name, t_map *map);
-void		d_line(t_img *img, t_pixel p0, t_pixel p1, int color);
-void		draw_line(t_img *img, t_line line, int color);
-// void		draw_grid(t_img *img, t_map map, int step);
-int			exit_window(t_win *window);
-int			key_parse(int key, t_win *window);
-int			ft_abs(int n);
-int			count_words(char const *str, char c);
-void		err_hndl(char *err);
+typedef struct s_fdf
+{
+	t_win	win;
+	t_img	*img;
+	t_map	*map;
+	t_cam	*cam;
+}	t_fdf;
+
+t_map	*map_read(char *filename);
+t_map	*init_map(void);
+t_pixel	**map_fill(char *file_name, t_map *map);
+t_line	*start_line(t_img *img, t_pixel p0, t_pixel p1, int color);
+void	pixel_put(t_img *data, int x, int y, int color);
+void	render(t_fdf *fdf, int scale);
+int		exit_window(t_win *window);
+int		key_parse(int key, t_win *window, t_cam *cam);
+int		ft_abs(int n);
+void	swap_points(t_pixel *p0, t_pixel *p1);
+void	free_map(t_fdf	*fdf);
+void	free_matrix(t_map *map);
+void	err_hndl(char *err);
 
 #endif

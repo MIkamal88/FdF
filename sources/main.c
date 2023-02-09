@@ -3,90 +3,72 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+        */
+/*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 10:01:35 by mshehata          #+#    #+#             */
-/*   Updated: 2023/02/08 13:39:04 by mshehata         ###   ########.fr       */
+/*   Updated: 2023/02/09 14:50:44 by m_kamal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 #include "../includes/color.h"
 
-void	pixel_put(t_img *data, int x, int y, int color)
+t_img	*new_img(int w, int h, t_win *window)
 {
-	char	*dst;
+	t_img	*image;
 
-	if (y > data->h || x > data->w || x < 0 || y < 0)
-		err_hndl("Pixel is out of image frame");
-	dst = data->addr + (y * data->line_length + x * (data->bpp / 8));
-	*(unsigned int *)dst = color;
-}
-
-t_win	new_window(int w, int h, char *str)
-{
-	void	*mlx;
-	void	*mlx_win;
-
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, w, h, str);
-	return ((t_win){mlx, mlx_win, w, h});
-}
-
-t_img	new_img(int w, int h, t_win *window)
-{
-	t_img	image;
-
-	image.win = *window;
+	image = malloc(sizeof(t_img));
+	if (!image)
+		return (NULL);
+	image->win = *window;
 	if (h > window->height || w > window->width)
 		err_hndl("Image frame is bigger than window");
-	image.img_ptr = mlx_new_image(window->mlx, w, h);
-	image.addr = mlx_get_data_addr(image.img_ptr, &(image.bpp),
-			&(image.line_length), &(image.endian));
-	image.w = w;
-	image.h = h;
+	image->img_ptr = mlx_new_image(window->mlx, w, h);
+	image->addr = mlx_get_data_addr(image->img_ptr, &(image->bpp),
+			&(image->line_length), &(image->endian));
+	image->w = w;
+	image->h = h;
 	return (image);
+}
+
+t_fdf	*init_fdf(char *filename)
+{
+	t_fdf	*fdf;
+
+	fdf = malloc(sizeof(t_fdf));
+	if (!fdf)
+		err_hndl("Can't Initialize FdF.");
+	map_read(filename);
+	fdf->map->matrix = map_fill(filename, fdf->map);
+	if (!fdf->map)
+	{
+		err_hndl("Can't Parse map.");
+		free(fdf);
+	}
+	fdf->win.mlx = mlx_init();
+	fdf->win.mlx_win = mlx_new_window(fdf->win.mlx, 1200, 900, "FdF");
+	fdf->img = new_img(1200, 900, &fdf->win);
+	if (!fdf->img)
+		free_map(fdf);
+}
+
+void	mlx_to_do(t_win *win, t_img *img, int x, int y)
+{
+	mlx_put_image_to_window(win->mlx, win->mlx_win, img->img_ptr, x, y);
+	mlx_hook(win->mlx_win, 17, 0, exit_window, win);
+	mlx_key_hook(win->mlx_win, key_parse, win);
+	mlx_loop(win->mlx);
 }
 
 int	main(int argc, char **argv)
 {
-	t_win	fdf;
-	t_img	img;
-	t_line	line;
-	t_map	map;
-	int		i;
-	int		j;
+	t_fdf	*fdf;
+	char	*file_name;
 
-	line.start.x = 0;
-	line.start.y = 0;
-	line.end.x = 1920;
-	line.end.y = 450;
-	i = 0;
-	j = 0;
 	if (argc != 2)
 		err_hndl("Please enter a valid map path");
-	else
-	{
-		map = map_read(argv[1]);
-		map.matrix = map_fill(argv[1], &map);
-		printf("X = %d\nY = %d\n", map.x_max, map.y_max);
-		while (j < map.y_max)
-		{
-			while (i < map.x_max)
-			{
-				printf("pix.X = %d pix.Y = %d pix.Z = %d\n",
-					map.matrix[j][i].x, map.matrix[j][i].y, map.matrix[j][i].z);
-				i++;
-			}
-			i = 0;
-			j++;
-		}
-		fdf = new_window(1920, 1080, "FdF");
-		img = new_img(1920, 1080, &fdf);
-		d_line(&img, line.start, line.end, TEXT_COLOR);
-		mlx_put_image_to_window(fdf.mlx, fdf.mlx_win, img.img_ptr, 0, 0);
-		mlx_hook(fdf.mlx_win, 17, 0, exit_window, &fdf);
-		mlx_key_hook(fdf.mlx_win, key_parse, &fdf);
-		mlx_loop(fdf.mlx);
-	}
+	file_name = argv[1];
+	fdf = init_fdf(file_name);
+
+	mlx_to_do(&fdf->win, fdf->img, 0, 0);
 }

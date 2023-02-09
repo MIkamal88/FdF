@@ -3,15 +3,48 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+        */
+/*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 07:40:41 by mshehata          #+#    #+#             */
-/*   Updated: 2023/02/08 13:42:21 by mshehata         ###   ########.fr       */
+/*   Updated: 2023/02/09 14:35:58 by m_kamal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 #include "../includes/color.h"
+
+static int	get_z_coord(char *line, int i, int x_max)
+{
+	char	**z_coords;
+	int		z;
+
+	if (!line)
+		return (0);
+	z_coords = ft_split(line, ' ');
+	z = ft_atoi(z_coords[i]);
+	i = 0;
+	while (z_coords[i])
+	{
+		free(z_coords[i]);
+		i++;
+	}
+	free(z_coords);
+	return (z);
+}
+
+static void	fill_row(t_map *map, char *line, int y)
+{
+	int	i;
+
+	i = 0;
+	while (i < map->x_max)
+	{
+		map->matrix[y][i].x = i;
+		map->matrix[y][i].y = y;
+		map->matrix[y][i].z = get_z_coord(line, i, map->x_max);
+		i++;
+	}
+}
 
 t_pixel	**map_fill(char *file_name, t_map *map)
 {
@@ -37,37 +70,4 @@ t_pixel	**map_fill(char *file_name, t_map *map)
 	}
 	free(line);
 	return (map->matrix);
-}
-
-int	get_z_coord(char *line, int i, int x_max)
-{
-	char	**z_coords;
-	int		z;
-
-	if (!line)
-		return (0);
-	z_coords = ft_split(line, ' ');
-	z = ft_atoi(z_coords[i]);
-	i = 0;
-	while (z_coords[i])
-	{
-		free(z_coords[i]);
-		i++;
-	}
-	free(z_coords);
-	return (z);
-}
-
-void	fill_row(t_map *map, char *line, int y)
-{
-	int	i;
-
-	i = 0;
-	while (i < map->x_max)
-	{
-		map->matrix[y][i].x = i;
-		map->matrix[y][i].y = y;
-		map->matrix[y][i].z = get_z_coord(line, i, map->x_max);
-		i++;
-	}
 }
