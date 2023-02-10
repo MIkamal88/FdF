@@ -6,7 +6,7 @@
 /*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 10:01:35 by mshehata          #+#    #+#             */
-/*   Updated: 2023/02/10 11:22:58 by m_kamal          ###   ########.fr       */
+/*   Updated: 2023/02/10 12:07:25 by m_kamal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,8 @@ t_fdf	*init_fdf(char *filename, int w, int h)
 void	mlx_to_do(t_win *win, t_img *img, int x, int y)
 {
 	mlx_put_image_to_window(win->mlx, win->m_win, img->img_ptr, x, y);
-	mlx_hook(win->m_win, 17, 0, &exit_window, win);
-	mlx_key_hook(win->m_win, &key_parse, win);
+	mlx_hook(win->m_win, 17, 0, exit_window, win);
+	mlx_key_hook(win->m_win, key_parse, win);
 	mlx_loop(win->mlx);
 }
 
