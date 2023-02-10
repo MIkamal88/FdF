@@ -6,7 +6,7 @@
 /*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 21:07:04 by mshehata          #+#    #+#             */
-/*   Updated: 2023/02/09 14:44:54 by m_kamal          ###   ########.fr       */
+/*   Updated: 2023/02/10 10:45:19 by m_kamal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ static void	plotline_high(t_img *img, t_line *line, int color)
 	}
 }
 
-static void	draw_line(t_img *img, t_line *line, int color)
+void	draw_line(t_img *img, t_line *line, int color)
 {
 	line->dx = line->end.x - line->start.x;
 	line->dy = line->end.y - line->start.y;

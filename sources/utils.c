@@ -6,7 +6,7 @@
 /*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 21:40:33 by mshehata          #+#    #+#             */
-/*   Updated: 2023/02/09 14:46:42 by m_kamal          ###   ########.fr       */
+/*   Updated: 2023/02/10 12:02:29 by m_kamal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,15 @@ void	free_matrix(t_map *map)
 	free(map->matrix);
 }
 
-void	free_map(t_fdf	*fdf)
+void	free_all(t_fdf *fdf)
 {
 	free_matrix(fdf->map);
-	free(fdf->map);
-	mlx_destroy_window(fdf->win.mlx, fdf->win.mlx_win);
-	mlx_destroy_display(fdf->win.mlx);
+	mlx_destroy_image(fdf->win->mlx, fdf->img->img_ptr);
+	free(fdf->img);
+	free(fdf->cam);
+	mlx_destroy_window(fdf->win->mlx, fdf->win->m_win);
+	mlx_destroy_display(fdf->win->mlx);
+	free(fdf->win->mlx);
+	free(fdf->win);
 	free(fdf);
 }
-

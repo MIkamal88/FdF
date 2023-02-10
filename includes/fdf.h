@@ -6,7 +6,7 @@
 /*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 18:29:26 by mshehata          #+#    #+#             */
-/*   Updated: 2023/02/09 14:51:55 by m_kamal          ###   ########.fr       */
+/*   Updated: 2023/02/10 11:55:14 by m_kamal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,13 @@
 typedef struct s_win
 {
 	void	*mlx;
-	void	*mlx_win;
+	void	*m_win;
 	int		width;
 	int		height;
 }	t_win;
 
 typedef struct s_img
 {
-	t_win	win;
 	void	*img_ptr;
 	char	*addr;
 	int		w;
@@ -79,7 +78,7 @@ typedef struct s_y_width {
 
 typedef struct s_fdf
 {
-	t_win	win;
+	t_win	*win;
 	t_img	*img;
 	t_map	*map;
 	t_cam	*cam;
@@ -87,16 +86,17 @@ typedef struct s_fdf
 
 t_map	*map_read(char *filename);
 t_map	*init_map(void);
-t_pixel	**map_fill(char *file_name, t_map *map);
+t_pixel	**map_fill(char *file_name, t_map *map, int x_max, int y_max);
 t_line	*start_line(t_img *img, t_pixel p0, t_pixel p1, int color);
 void	pixel_put(t_img *data, int x, int y, int color);
 void	render(t_fdf *fdf, int scale);
-int		exit_window(t_win *window);
-int		key_parse(int key, t_win *window, t_cam *cam);
+int		exit_window(t_fdf *fdf);
+int		key_parse(int key, t_fdf *fdf, t_cam *cam);
 int		ft_abs(int n);
 void	swap_points(t_pixel *p0, t_pixel *p1);
-void	free_map(t_fdf	*fdf);
 void	free_matrix(t_map *map);
+void	free_all(t_fdf *fdf);
 void	err_hndl(char *err);
+void	draw_line(t_img *img, t_line *line, int color);
 
 #endif

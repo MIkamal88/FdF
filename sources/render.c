@@ -6,7 +6,7 @@
 /*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 11:28:36 by m_kamal           #+#    #+#             */
-/*   Updated: 2023/02/09 14:37:48 by m_kamal          ###   ########.fr       */
+/*   Updated: 2023/02/09 16:51:29 by m_kamal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 static void	render_line(t_fdf *fdf, t_pixel p0, t_pixel p1, int scale)
 {
 	scale = ((scale * 10) % 10) * 10;
-
 
 }
 
@@ -42,4 +41,3 @@ void	render(t_fdf *fdf, int scale)
 		y++;
 	}
 }
-
