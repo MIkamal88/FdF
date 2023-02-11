@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 11:28:36 by m_kamal           #+#    #+#             */
-/*   Updated: 2023/02/11 12:22:59 by m_kamal          ###   ########.fr       */
+/*   Updated: 2023/02/11 19:03:57 by mshehata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ static void	scale_line(t_line *line, int scale)
 	line->end.y *= scale;
 }
 
-//Handle colors
 static void	render_line(t_fdf *fdf, t_pixel p0, t_pixel p1, float scale)
 {
 	int	scale2;
@@ -31,10 +30,23 @@ static void	render_line(t_fdf *fdf, t_pixel p0, t_pixel p1, float scale)
 	fdf->img->line = start_line(p0, p1);
 	if (!fdf->img->line)
 		err_hndl("Failed to render");
-	// projection(fdf->cam, fdf->img->line);
+	projection(fdf->cam, fdf->img->line);
 	scale_line(fdf->img->line, scale2);
 	draw_line(fdf->img, fdf->img->line, TEXT_COLOR);
 	free(fdf->img->line);
+}
+
+void	pixel_put(t_img *data, int x, int y, int color)
+{
+	char	*dst;
+
+	if (y > data->h || x > data->w || x < 0 || y < 0)
+	{
+		printf("X %d\nY %d", x, y);
+		err_hndl("Pixel is out of image frame");
+	}
+	dst = data->addr + (y * data->line_length + x * (data->bpp / 8));
+	*(unsigned int *)dst = color;
 }
 
 void	render(t_fdf *fdf, float scale, int color)
@@ -48,12 +60,12 @@ void	render(t_fdf *fdf, float scale, int color)
 		x = 0;
 		while (x < fdf->map->x_max)
 		{
-			if (x < fdf->map->x_max - 1)
-				render_line(fdf, fdf->map->matrix[x][y],
-					fdf->map->matrix[x + 1][y], scale);
-			if (y < fdf->map->y_max - 1)
-				render_line(fdf, fdf->map->matrix[x][y],
-					fdf->map->matrix[x][y + 1], scale);
+			if (x < (fdf->map->x_max - 1))
+				render_line(fdf, fdf->map->matrix[y][x],
+					fdf->map->matrix[y][x + 1], scale);
+			if (y < (fdf->map->y_max - 1))
+				render_line(fdf, fdf->map->matrix[y][x],
+					fdf->map->matrix[y + 1][x], scale);
 			x++;
 		}
 		y++;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 10:01:35 by mshehata          #+#    #+#             */
-/*   Updated: 2023/02/10 17:08:17 by m_kamal          ###   ########.fr       */
+/*   Updated: 2023/02/11 18:35:51 by mshehata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,13 @@ t_fdf	*init_fdf(char *filename, int w, int h)
 	return (fdf);
 }
 
-void	mlx_to_do(t_win *win, t_img *img, int x, int y)
+void	mlx_to_do(t_fdf *fdf, int x, int y)
 {
-	mlx_put_image_to_window(win->mlx, win->m_win, img->img_ptr, x, y);
-	mlx_hook(win->m_win, 17, 0, exit_window, win);
-	mlx_key_hook(win->m_win, key_parse, win);
-	mlx_loop(win->mlx);
+	mlx_put_image_to_window(fdf->win->mlx, fdf->win->m_win,
+		fdf->img->img_ptr, 50, 50);
+	mlx_hook(fdf->win->m_win, 17, 0, exit_window, fdf);
+	mlx_key_hook(fdf->win->m_win, key_parse, fdf);
+	mlx_loop(fdf->win->mlx);
 }
 
 int	main(int argc, char **argv)
@@ -80,7 +81,7 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		err_hndl("Please enter a valid map path");
 	file_name = argv[1];
-	fdf = init_fdf(file_name, 1200, 900);
-	render(fdf, 1.2, TEXT_COLOR);
-	mlx_to_do(fdf->win, fdf->img, 0, 0);
+	fdf = init_fdf(file_name, 1920, 1080);
+	render(fdf, 1.1, TEXT_COLOR);
+	mlx_to_do(fdf, 0, 0);
 }

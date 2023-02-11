@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 18:29:26 by mshehata          #+#    #+#             */
-/*   Updated: 2023/02/10 17:19:48 by m_kamal          ###   ########.fr       */
+/*   Updated: 2023/02/11 15:52:38 by mshehata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 # include "../libft/includes/libft.h"
 # include "../libft/includes/get_next_line.h"
-# include "../mlx_linux/mlx.h"
+// # include "../mlx_linux/mlx.h"
 # include <math.h>
-// # include "../mlx_mac/mlx.h"
+# include "../mlx_mac/mlx.h"
 
 # define ANG_30	0.5236
 
@@ -90,7 +90,7 @@ void	draw_line(t_img *img, t_line *line, int color);
 void	render(t_fdf *fdf, float scale, int color);
 void	projection(t_cam *cam, t_line *line);
 int		exit_window(t_fdf *fdf);
-int		key_parse(int key, t_fdf *fdf, t_cam *cam);
+int		key_parse(int key, t_fdf *fdf);
 int		ft_abs(int n);
 void	swap_points(t_pixel *p0, t_pixel *p1);
 void	free_matrix(t_map *map);

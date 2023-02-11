@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   projection.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 09:21:12 by m_kamal           #+#    #+#             */
-/*   Updated: 2023/02/10 17:16:01 by m_kamal          ###   ########.fr       */
+/*   Updated: 2023/02/11 18:53:52 by mshehata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,10 @@ static void	isometric_projection(t_line *line)
 	line->end.y = new_end.y;
 }
 
-// void	projection(t_cam *cam, t_line *line)
-// {
-// 	if (cam->projection == isometric)
-// 		isometric_projection(line);
-// 	else if (cam->projection == top)
-// 		return ;
-// }
-
+void	projection(t_cam *cam, t_line *line)
+{
+	// if (cam->projection == isometric)
+		isometric_projection(line);
+	// else if (cam->projection == top)
+		// return ;
+}
