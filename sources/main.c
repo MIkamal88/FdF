@@ -6,7 +6,7 @@
 /*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 10:01:35 by mshehata          #+#    #+#             */
-/*   Updated: 2023/02/10 12:07:25 by m_kamal          ###   ########.fr       */
+/*   Updated: 2023/02/10 17:08:17 by m_kamal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,21 +76,11 @@ int	main(int argc, char **argv)
 {
 	t_fdf	*fdf;
 	char	*file_name;
-	t_pixel	p0;
-	t_pixel	p1;
-	t_line	line;
 
-	p0.x = 0;
-	p0.y = 0;
-	p1.x = 50;
-	p1.y = 867;
-	line.start = p0;
-	line.end = p1;
 	if (argc != 2)
 		err_hndl("Please enter a valid map path");
 	file_name = argv[1];
 	fdf = init_fdf(file_name, 1200, 900);
-	// render;
-	draw_line(fdf->img, &line, TEXT_COLOR);
+	render(fdf, 1.2, TEXT_COLOR);
 	mlx_to_do(fdf->win, fdf->img, 0, 0);
 }

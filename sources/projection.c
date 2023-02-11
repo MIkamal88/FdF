@@ -6,22 +6,14 @@
 /*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 09:21:12 by m_kamal           #+#    #+#             */
-/*   Updated: 2023/02/09 09:43:20 by m_kamal          ###   ########.fr       */
+/*   Updated: 2023/02/10 17:16:01 by m_kamal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 #include "../includes/color.h"
 
-void	projection(t_cam *cam, t_line *line)
-{
-	if (cam->projection == isometric)
-		isometric(line);
-	else if (cam->projection == top)
-		return ;
-}
-
-static void	isometric(t_line *line)
+static void	isometric_projection(t_line *line)
 {
 	t_pixel	new_start;
 	t_pixel	new_end;
@@ -36,3 +28,12 @@ static void	isometric(t_line *line)
 	line->end.x = new_end.x;
 	line->end.y = new_end.y;
 }
+
+// void	projection(t_cam *cam, t_line *line)
+// {
+// 	if (cam->projection == isometric)
+// 		isometric_projection(line);
+// 	else if (cam->projection == top)
+// 		return ;
+// }
+

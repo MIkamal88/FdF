@@ -6,14 +6,14 @@
 /*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 21:07:04 by mshehata          #+#    #+#             */
-/*   Updated: 2023/02/10 10:45:19 by m_kamal          ###   ########.fr       */
+/*   Updated: 2023/02/10 17:03:21 by m_kamal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 #include "../includes/color.h"
 
-t_line	*start_line(t_img *img, t_pixel p0, t_pixel p1, int color)
+t_line	*start_line(t_pixel p0, t_pixel p1)
 {
 	t_line	*line;
 
@@ -32,7 +32,7 @@ void	pixel_put(t_img *data, int x, int y, int color)
 	char	*dst;
 
 	if (y > data->h || x > data->w || x < 0 || y < 0)
-		err_hndl("Pixel is out of image frame");
+		err_hndl("Pixeql is out of image frame");
 	dst = data->addr + (y * data->line_length + x * (data->bpp / 8));
 	*(unsigned int *)dst = color;
 }

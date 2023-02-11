@@ -6,7 +6,7 @@
 /*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 18:29:26 by mshehata          #+#    #+#             */
-/*   Updated: 2023/02/10 11:55:14 by m_kamal          ###   ########.fr       */
+/*   Updated: 2023/02/10 17:19:48 by m_kamal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,21 @@
 
 # define ANG_30	0.5236
 
+typedef struct s_pixel {
+	int	x;
+	int	y;
+	int	z;
+}	t_pixel;
+
+typedef struct s_line {
+	t_pixel	start;
+	t_pixel	end;
+	int		dx;
+	int		dy;
+	int		decision;
+	int		color;
+}	t_line;
+
 typedef struct s_win
 {
 	void	*mlx;
@@ -31,6 +46,7 @@ typedef struct s_win
 
 typedef struct s_img
 {
+	t_line	*line;
 	void	*img_ptr;
 	char	*addr;
 	int		w;
@@ -51,30 +67,11 @@ enum	e_projection
 	top
 };
 
-typedef struct s_pixel {
-	int	x;
-	int	y;
-	int	z;
-}	t_pixel;
-
-typedef struct s_line {
-	t_pixel	start;
-	t_pixel	end;
-	int		dx;
-	int		dy;
-	int		decision;
-}	t_line;
-
 typedef struct s_map {
 	t_pixel	**matrix;
 	int		x_max;
 	int		y_max;
 }	t_map;
-
-typedef struct s_y_width {
-	char	*line;
-	int		y;
-}	t_y_width;
 
 typedef struct s_fdf
 {
@@ -87,9 +84,11 @@ typedef struct s_fdf
 t_map	*map_read(char *filename);
 t_map	*init_map(void);
 t_pixel	**map_fill(char *file_name, t_map *map, int x_max, int y_max);
-t_line	*start_line(t_img *img, t_pixel p0, t_pixel p1, int color);
+t_line	*start_line(t_pixel p0, t_pixel p1);
 void	pixel_put(t_img *data, int x, int y, int color);
-void	render(t_fdf *fdf, int scale);
+void	draw_line(t_img *img, t_line *line, int color);
+void	render(t_fdf *fdf, float scale, int color);
+void	projection(t_cam *cam, t_line *line);
 int		exit_window(t_fdf *fdf);
 int		key_parse(int key, t_fdf *fdf, t_cam *cam);
 int		ft_abs(int n);
@@ -97,6 +96,5 @@ void	swap_points(t_pixel *p0, t_pixel *p1);
 void	free_matrix(t_map *map);
 void	free_all(t_fdf *fdf);
 void	err_hndl(char *err);
-void	draw_line(t_img *img, t_line *line, int color);
 
 #endif
