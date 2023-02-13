@@ -6,14 +6,14 @@
 /*   By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 15:15:43 by m_kamal           #+#    #+#             */
-/*   Updated: 2023/01/25 13:06:01 by mshehata         ###   ########.fr       */
+/*   Updated: 2023/02/13 09:31:37 by mshehata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef COLOR_H
 # define COLOR_H
 
-# define TEXT_COLOR		0xEBBEFF
+# define TEXT_COLOR		0xFFFFFF
 # define SQUARE_COLOR	0xEB2828
 
 #endif

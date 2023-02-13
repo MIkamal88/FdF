@@ -6,7 +6,7 @@
 /*   By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 10:01:35 by mshehata          #+#    #+#             */
-/*   Updated: 2023/02/11 18:35:51 by mshehata         ###   ########.fr       */
+/*   Updated: 2023/02/13 14:12:03 by mshehata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ t_fdf	*init_fdf(char *filename, int w, int h)
 void	mlx_to_do(t_fdf *fdf, int x, int y)
 {
 	mlx_put_image_to_window(fdf->win->mlx, fdf->win->m_win,
-		fdf->img->img_ptr, 50, 50);
+		fdf->img->img_ptr, 0, 0);
 	mlx_hook(fdf->win->m_win, 17, 0, exit_window, fdf);
 	mlx_key_hook(fdf->win->m_win, key_parse, fdf);
 	mlx_loop(fdf->win->mlx);
@@ -81,7 +81,7 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		err_hndl("Please enter a valid map path");
 	file_name = argv[1];
-	fdf = init_fdf(file_name, 1920, 1080);
-	render(fdf, 1.1, TEXT_COLOR);
+	fdf = init_fdf(file_name, WIN_WIDTH, WIN_HEIGHT);
+	render(fdf, 1.2, TEXT_COLOR);
 	mlx_to_do(fdf, 0, 0);
 }

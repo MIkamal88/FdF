@@ -6,7 +6,7 @@
 /*   By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 18:29:26 by mshehata          #+#    #+#             */
-/*   Updated: 2023/02/11 15:52:38 by mshehata         ###   ########.fr       */
+/*   Updated: 2023/02/13 15:33:13 by mshehata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@
 # include <math.h>
 # include "../mlx_mac/mlx.h"
 
+# define PI 3.14159265
 # define ANG_30	0.5236
+# define WIN_WIDTH	1920
+# define WIN_HEIGHT	1080
 
 typedef struct s_pixel {
 	int	x;
