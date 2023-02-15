@@ -3,31 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   line.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+        */
+/*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 21:07:04 by mshehata          #+#    #+#             */
-/*   Updated: 2023/02/13 14:20:48 by mshehata         ###   ########.fr       */
+/*   Updated: 2023/02/15 17:12:45 by m_kamal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 #include "../includes/color.h"
 
-t_line	*start_line(t_pixel p0, t_pixel p1)
+t_line	*start_line(t_pixel p0, t_pixel p1, int color)
 {
 	t_line	*line;
 
-	line = malloc(sizeof(line));
+	line = malloc(sizeof(t_line));
 	if (!line)
 		return (NULL);
 	line->start.x = p0.x;
 	line->start.y = p0.y;
 	line->end.x = p1.x;
 	line->end.y = p1.y;
+	line->decision = 0;
+	line->dx = 0;
+	line->dy = 0;
+	line->color = color;
 	return (line);
 }
 
-static void	plotline_low(t_img *img, t_line *line, int color)
+static void	plotline_low(t_img *img, t_line *line)
 {
 	t_pixel	pixel;
 	int		yi;
@@ -44,7 +48,7 @@ static void	plotline_low(t_img *img, t_line *line, int color)
 	line->decision = (2 * line->dy) - line->dx;
 	while (pixel.x < line->end.x)
 	{
-		pixel_put(img, pixel.x, pixel.y, color);
+		pixel_put(img, pixel.x, pixel.y, line->color);
 		if (line->decision > 0)
 		{
 			pixel.y = pixel.y + yi;
@@ -56,7 +60,7 @@ static void	plotline_low(t_img *img, t_line *line, int color)
 	}
 }
 
-static void	plotline_high(t_img *img, t_line *line, int color)
+static void	plotline_high(t_img *img, t_line *line)
 {
 	t_pixel	pixel;
 	int		xi;
@@ -73,7 +77,7 @@ static void	plotline_high(t_img *img, t_line *line, int color)
 	line->decision = (2 * line->dx) - line->dy;
 	while (pixel.y < line->end.y)
 	{
-		pixel_put(img, pixel.x, pixel.y, color);
+		pixel_put(img, pixel.x, pixel.y, line->color);
 		if (line->decision > 0)
 		{
 			pixel.x = pixel.x + xi;
@@ -85,7 +89,7 @@ static void	plotline_high(t_img *img, t_line *line, int color)
 	}
 }
 
-void	draw_line(t_img *img, t_line *line, int color)
+void	draw_line(t_img *img, t_line *line)
 {
 	line->dx = line->end.x - line->start.x;
 	line->dy = line->end.y - line->start.y;
@@ -94,19 +98,19 @@ void	draw_line(t_img *img, t_line *line, int color)
 		if (line->start.x > line->end.x)
 		{
 			swap_points(&line->start, &line->end);
-			plotline_low(img, line, color);
+			plotline_low(img, line);
 		}
 		else
-			plotline_low(img, line, color);
+			plotline_low(img, line);
 	}
 	else
 	{
 		if (line->start.y > line->end.y)
 		{
 			swap_points(&line->start, &line->end);
-			plotline_high(img, line, color);
+			plotline_high(img, line);
 		}
 		else
-			plotline_high(img, line, color);
+			plotline_high(img, line);
 	}
 }

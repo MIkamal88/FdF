@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+        */
+/*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 21:40:33 by mshehata          #+#    #+#             */
-/*   Updated: 2023/02/13 13:59:04 by mshehata         ###   ########.fr       */
+/*   Updated: 2023/02/15 17:37:07 by m_kamal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	swap_points(t_pixel *p0, t_pixel *p1)
 	p1->y = tmp2;
 }
 
-void	free_matrix(t_map *map)
+void	free_map(t_map *map)
 {
 	int	i;
 
@@ -44,15 +44,16 @@ void	free_matrix(t_map *map)
 		i++;
 	}
 	free(map->matrix);
+	free(map);
 }
 
 void	free_all(t_fdf *fdf)
 {
-	free_matrix(fdf->map);
+	free_map(fdf->map);
 	mlx_destroy_image(fdf->win->mlx, fdf->img->img_ptr);
 	free(fdf->img);
 	mlx_destroy_window(fdf->win->mlx, fdf->win->m_win);
-	// mlx_destroy_display(fdf->win->mlx);
+	mlx_destroy_display(fdf->win->mlx);
 	free(fdf->win->mlx);
 	free(fdf->win);
 	free(fdf);

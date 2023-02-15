@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+        */
+/*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 10:01:35 by mshehata          #+#    #+#             */
-/*   Updated: 2023/02/13 14:12:03 by mshehata         ###   ########.fr       */
+/*   Updated: 2023/02/15 18:05:01 by m_kamal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,7 @@ t_fdf	*init_fdf(char *filename, int w, int h)
 	if (!fdf)
 		err_hndl("Can't Initialize FdF.");
 	fdf->map = map_read(filename);
-	fdf->map->matrix = map_fill(filename, fdf->map,
-			fdf->map->x_max, fdf->map->y_max);
+	map_fill(filename, fdf->map, fdf->map->x_max, fdf->map->y_max);
 	if (!fdf->map)
 	{
 		err_hndl("Can't Parse map.");
@@ -60,7 +59,7 @@ t_fdf	*init_fdf(char *filename, int w, int h)
 	fdf->win = new_win(w, h);
 	fdf->img = new_img(w, h, fdf->win);
 	if (!fdf->img)
-		free_matrix(fdf->map);
+		free_map(fdf->map);
 	return (fdf);
 }
 
@@ -81,7 +80,7 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		err_hndl("Please enter a valid map path");
 	file_name = argv[1];
-	fdf = init_fdf(file_name, WIN_WIDTH, WIN_HEIGHT);
-	render(fdf, 1.2, TEXT_COLOR);
+	fdf = init_fdf(file_name, 1920, 1080);
+	render(fdf, 5, TEXT_COLOR);
 	mlx_to_do(fdf, 0, 0);
 }

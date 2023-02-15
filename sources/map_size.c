@@ -6,7 +6,7 @@
 /*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 07:40:41 by mshehata          #+#    #+#             */
-/*   Updated: 2023/02/09 14:32:58 by m_kamal          ###   ########.fr       */
+/*   Updated: 2023/02/15 13:10:09 by m_kamal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static int	count_x(char const *str, char c)
 	return (count);
 }
 
-t_map	*init_map(void)
+static t_map	*init_map(void)
 {
 	t_map	*map;
 
@@ -64,11 +64,13 @@ t_map	*init_map(void)
 
 t_map	*map_read(char *file_name)
 {
-	t_map	*map;
 	int		fd;
 	char	*line;
+	t_map	*map;
 
 	map = init_map();
+	if (!map)
+		return (NULL);
 	fd = open(file_name, O_RDONLY);
 	if (fd < 0)
 		err_hndl("Can't read Map size.");
