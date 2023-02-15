@@ -6,7 +6,7 @@
 /*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 18:29:26 by mshehata          #+#    #+#             */
-/*   Updated: 2023/02/15 18:03:48 by m_kamal          ###   ########.fr       */
+/*   Updated: 2023/02/15 20:08:34 by m_kamal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 // # include "../mlx_mac/mlx.h"
 
 # define ANG_30	0.5236
+# define WINDOW_WIDTH	1920
+# define WINDOW_HEIGHT	1080
 
 typedef struct s_pixel {
 	int	x;

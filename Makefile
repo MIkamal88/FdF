@@ -6,7 +6,7 @@
 #    By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/14 18:07:59 by mshehata          #+#    #+#              #
-#    Updated: 2023/02/15 17:20:40 by m_kamal          ###   ########.fr        #
+#    Updated: 2023/02/16 02:16:20 by m_kamal          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,3 +68,6 @@ re: fclean all
 #	MLX			=	libmlx.a
 #	LINK_MLX	=	-L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
 #endif
+#valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./fdf ./maps/42.fdf
+
+

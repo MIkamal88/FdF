@@ -6,7 +6,7 @@
 /*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 10:01:35 by mshehata          #+#    #+#             */
-/*   Updated: 2023/02/15 18:05:01 by m_kamal          ###   ########.fr       */
+/*   Updated: 2023/02/15 21:22:56 by m_kamal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		err_hndl("Please enter a valid map path");
 	file_name = argv[1];
-	fdf = init_fdf(file_name, 1920, 1080);
-	render(fdf, 5, TEXT_COLOR);
+	fdf = init_fdf(file_name, WINDOW_WIDTH, WINDOW_HEIGHT);
+	render(fdf, 15, TEXT_COLOR);
 	mlx_to_do(fdf, 0, 0);
 }

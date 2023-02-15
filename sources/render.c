@@ -6,7 +6,7 @@
 /*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 11:28:36 by m_kamal           #+#    #+#             */
-/*   Updated: 2023/02/15 18:08:50 by m_kamal          ###   ########.fr       */
+/*   Updated: 2023/02/16 02:15:06 by m_kamal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	render_line(t_fdf *fdf, t_pixel p0, t_pixel p1, int scale)
 	fdf->img->line = start_line(p0, p1, fdf->img->line_color);
 	if (!fdf->img->line)
 		err_hndl("Failed to render");
-	projection(fdf->cam, fdf->img->line);
+	// projection(fdf->cam, fdf->img->line);
 	scale_line(fdf->img->line, scale);
 	draw_line(fdf->img, fdf->img->line);
 	free(fdf->img->line);
@@ -36,8 +36,11 @@ void	pixel_put(t_img *data, int x, int y, int color)
 {
 	char	*dst;
 
-	if (y > data->h || x > data->w)
+	if (y > data->h || x > data->w || x < 0 || y < 0)
+	{
+		printf("X=%d Y=%d\n", x, y);
 		err_hndl("Pixel is out of image frame");
+	}
 	dst = data->addr + (y * data->line_length + x * (data->bpp / 8));
 	*(unsigned int *)dst = color;
 }
