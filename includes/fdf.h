@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 18:29:26 by mshehata          #+#    #+#             */
-/*   Updated: 2023/02/15 20:08:34 by m_kamal          ###   ########.fr       */
+/*   Updated: 2023/02/16 15:27:01 by mshehata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,23 @@
 # include <math.h>
 // # include "../mlx_mac/mlx.h"
 
-# define ANG_30	0.5236
+# define ANG_30			0.52359816
 # define WINDOW_WIDTH	1920
 # define WINDOW_HEIGHT	1080
+# define ISOMETRIC		1
+# define TOPVIEW		2
 
 typedef struct s_pixel {
-	int	x;
-	int	y;
-	int	z;
+	float	x;
+	float	y;
+	float	z;
 }	t_pixel;
 
 typedef struct s_line {
 	t_pixel	start;
 	t_pixel	end;
-	int		dx;
-	int		dy;
+	float	dx;
+	float	dy;
 	int		decision;
 	int		color;
 }	t_line;
@@ -64,12 +66,6 @@ typedef struct s_cam
 	int	projection;
 }	t_cam;
 
-enum	e_projection
-{
-	isometric,
-	top
-};
-
 typedef struct s_map {
 	t_pixel	**matrix;
 	int		x_max;
@@ -89,6 +85,7 @@ t_pixel	**map_fill(char *file_name, t_map *map, int x_max, int y_max);
 t_line	*start_line(t_pixel p0, t_pixel p1, int color);
 void	pixel_put(t_img *data, int x, int y, int color);
 void	draw_line(t_img *img, t_line *line);
+void	draw_line2(t_img *img, t_line *line);
 void	render(t_fdf *fdf, int scale, int color);
 void	projection(t_cam *cam, t_line *line);
 int		exit_window(t_fdf *fdf);

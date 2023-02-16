@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 21:40:33 by mshehata          #+#    #+#             */
-/*   Updated: 2023/02/15 17:37:07 by m_kamal          ###   ########.fr       */
+/*   Updated: 2023/02/16 09:04:10 by mshehata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	free_all(t_fdf *fdf)
 	mlx_destroy_image(fdf->win->mlx, fdf->img->img_ptr);
 	free(fdf->img);
 	mlx_destroy_window(fdf->win->mlx, fdf->win->m_win);
-	mlx_destroy_display(fdf->win->mlx);
+	// mlx_destroy_display(fdf->win->mlx);
 	free(fdf->win->mlx);
 	free(fdf->win);
 	free(fdf);

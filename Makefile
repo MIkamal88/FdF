@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+         #
+#    By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/14 18:07:59 by mshehata          #+#    #+#              #
-#    Updated: 2023/02/16 02:16:20 by m_kamal          ###   ########.fr        #
+#    Updated: 2023/02/16 15:27:55 by mshehata         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,11 +28,11 @@ OFILES = $(LIBFT:.c=.o) $(SRCS:.c=.o)
 
 CC = gcc -g3
 
-FLAGS = -Wall -Wextra -Werror #-fsanitize=address #remove -g before submission
+FLAGS = -Wall -Wextra -Werror -fsanitize=address #remove -g before submission
 
 RM = rm -f
 
-all :	$(LINUX)
+all :	$(MAC)
 
 $(LINUX):	ANNOUNCE $(OFILES)
 	$(CC) $(FLAGS) $(OFILES) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(LINUX)

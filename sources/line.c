@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 21:07:04 by mshehata          #+#    #+#             */
-/*   Updated: 2023/02/15 20:08:21 by m_kamal          ###   ########.fr       */
+/*   Updated: 2023/02/16 14:51:27 by mshehata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,10 @@ t_line	*start_line(t_pixel p0, t_pixel p1, int color)
 		return (NULL);
 	line->start.x = p0.x;
 	line->start.y = p0.y;
+	line->start.z = p0.z;
 	line->end.x = p1.x;
 	line->end.y = p1.y;
+	line->end.z = p1.z;
 	line->decision = 0;
 	line->dx = 0;
 	line->dy = 0;
@@ -112,5 +114,34 @@ void	draw_line(t_img *img, t_line *line)
 		}
 		else
 			plotline_high(img, line);
+	}
+}
+
+void	draw_line2(t_img *img, t_line *line)
+{
+	t_pixel	pixel;
+	float	steps;
+	float	x_increment;
+	float	y_increment;
+	int		i;
+
+	i = 0;
+	pixel = line->start;
+	line->dx = line->end.x - line->start.x;
+	line->dy = line->end.y - line->start.y;
+	line->dx = ft_abs(line->dx);
+	line->dy = ft_abs(line->dy);
+	if (line->dx >= line->dy)
+		steps = line->dx;
+	else
+		steps = line->dy;
+	x_increment = (line->dx) / steps;
+	y_increment = (line->dy) / steps;
+	while (i < steps)
+	{
+		pixel_put(img, pixel.x, pixel.y, line->color);
+		pixel.x += x_increment;
+		pixel.y += y_increment;
+		i++;
 	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 10:01:35 by mshehata          #+#    #+#             */
-/*   Updated: 2023/02/15 21:22:56 by m_kamal          ###   ########.fr       */
+/*   Updated: 2023/02/16 15:22:58 by mshehata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,6 @@ t_fdf	*init_fdf(char *filename, int w, int h)
 
 void	mlx_to_do(t_fdf *fdf, int x, int y)
 {
-	mlx_put_image_to_window(fdf->win->mlx, fdf->win->m_win,
-		fdf->img->img_ptr, 0, 0);
 	mlx_hook(fdf->win->m_win, 17, 0, exit_window, fdf);
 	mlx_key_hook(fdf->win->m_win, key_parse, fdf);
 	mlx_loop(fdf->win->mlx);
