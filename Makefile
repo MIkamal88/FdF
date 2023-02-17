@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+         #
+#    By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/14 18:07:59 by mshehata          #+#    #+#              #
-#    Updated: 2023/02/16 15:27:55 by mshehata         ###   ########.fr        #
+#    Updated: 2023/02/17 08:55:48 by m_kamal          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,13 +22,13 @@ LIBFT =	./libft/srcs/ft_split.c ./libft/srcs/ft_atoi.c ./libft/srcs/ft_bzero.c .
 		./libft/srcs/ft_strdup.c ./libft/srcs/ft_strlcat.c ./libft/srcs/ft_strlcpy.c ./libft/srcs/ft_strnstr.c ./libft/srcs/ft_strtrim.c\
 
 SRCS = ./sources/main.c ./sources/hooks.c ./sources/line.c ./sources/errors.c ./sources/utils.c ./sources/parsing.c\
-		./sources/map_size.c ./sources/render.c ./sources/projection.c
+		./sources/map_size.c ./sources/render.c ./sources/projection.c ./sources/cam.c
 
 OFILES = $(LIBFT:.c=.o) $(SRCS:.c=.o)
 
 CC = gcc -g3
 
-FLAGS = -Wall -Wextra -Werror -fsanitize=address #remove -g before submission
+FLAGS = -Wall -Wextra -Werror #-fsanitize=address #remove -g before submission
 
 RM = rm -f
 
@@ -69,5 +69,3 @@ re: fclean all
 #	LINK_MLX	=	-L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
 #endif
 #valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./fdf ./maps/42.fdf
-
-

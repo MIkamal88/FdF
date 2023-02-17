@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keybinds.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+        */
+/*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 08:20:48 by m_kamal           #+#    #+#             */
-/*   Updated: 2023/02/16 15:27:22 by mshehata         ###   ########.fr       */
+/*   Updated: 2023/02/17 09:11:33 by m_kamal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,19 @@
 # define KEYBINDS_H
 
 // MAC_OS
-// # define KEY_ESC 53   // key escape
-// # define ENTER 36 // key "enter"
-// # define FOLLOW 3 // key "f"
-// # define COLOR 8  // key "c"
-// # define UP 126   // key "arrow up"
-// # define DOWN 125 // key "arrow down"
+// # define KEY_ESC 53
+// # define ENTER 36
+// # define KEY_F 3
+// # define KEY_R 15
+// # define KEY_I 34
+// # define KEY_O 31
+// # define KEY_C 8
+// # define NUMKEY_1 18
+// # define NUMKEY_2 19
+// # define KEY_UP 126
+// # define KEY_DOWN 125
+// # define KEY_LEFT 123
+// # define KEY_RIGHT 124
 
 // LINUX
 # define KEY_LEFT	65361

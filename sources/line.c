@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   line.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+        */
+/*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 21:07:04 by mshehata          #+#    #+#             */
-/*   Updated: 2023/02/16 14:51:27 by mshehata         ###   ########.fr       */
+/*   Updated: 2023/02/17 09:23:32 by m_kamal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,31 +117,31 @@ void	draw_line(t_img *img, t_line *line)
 	}
 }
 
-void	draw_line2(t_img *img, t_line *line)
-{
-	t_pixel	pixel;
-	float	steps;
-	float	x_increment;
-	float	y_increment;
-	int		i;
+// void	draw_line2(t_img *img, t_line *line)
+// {
+// 	t_pixel	pixel;
+// 	float	steps;
+// 	float	x_increment;
+// 	float	y_increment;
+// 	int		i;
 
-	i = 0;
-	pixel = line->start;
-	line->dx = line->end.x - line->start.x;
-	line->dy = line->end.y - line->start.y;
-	line->dx = ft_abs(line->dx);
-	line->dy = ft_abs(line->dy);
-	if (line->dx >= line->dy)
-		steps = line->dx;
-	else
-		steps = line->dy;
-	x_increment = (line->dx) / steps;
-	y_increment = (line->dy) / steps;
-	while (i < steps)
-	{
-		pixel_put(img, pixel.x, pixel.y, line->color);
-		pixel.x += x_increment;
-		pixel.y += y_increment;
-		i++;
-	}
-}
+// 	i = 0;
+// 	pixel = line->start;
+// 	line->dx = line->end.x - line->start.x;
+// 	line->dy = line->end.y - line->start.y;
+// 	line->dx = ft_abs(line->dx);
+// 	line->dy = ft_abs(line->dy);
+// 	if (line->dx >= line->dy)
+// 		steps = line->dx;
+// 	else
+// 		steps = line->dy;
+// 	x_increment = (line->dx) / steps;
+// 	y_increment = (line->dy) / steps;
+// 	while (i < steps)
+// 	{
+// 		pixel_put(img, pixel.x, pixel.y, line->color);
+// 		pixel.x += x_increment;
+// 		pixel.y += y_increment;
+// 		i++;
+// 	}
+// }
