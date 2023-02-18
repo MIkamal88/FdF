@@ -6,7 +6,7 @@
 /*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 07:40:41 by mshehata          #+#    #+#             */
-/*   Updated: 2023/02/18 07:59:33 by m_kamal          ###   ########.fr       */
+/*   Updated: 2023/02/18 08:22:24 by m_kamal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,7 @@ static void	fill_row(t_map *map, char *line, int y)
 	}
 	i = 0;
 	while (z_data[i])
-	{
-		free(z_data[i]);
-		i++;
-	}
+		free(z_data[i++]);
 	free(z_data);
 }
 

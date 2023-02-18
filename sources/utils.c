@@ -6,7 +6,7 @@
 /*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 21:40:33 by mshehata          #+#    #+#             */
-/*   Updated: 2023/02/17 09:25:06 by m_kamal          ###   ########.fr       */
+/*   Updated: 2023/02/18 08:24:07 by m_kamal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,7 @@ void	free_map(t_map *map)
 
 	i = 0;
 	while (i < map->y_max)
-	{
-		free(map->matrix[i]);
-		i++;
-	}
+		free(map->matrix[i++]);
 	free(map->matrix);
 	free(map);
 }
