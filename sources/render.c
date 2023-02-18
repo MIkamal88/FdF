@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 11:28:36 by m_kamal           #+#    #+#             */
-/*   Updated: 2023/02/18 12:22:03 by m_kamal          ###   ########.fr       */
+/*   Updated: 2023/02/18 15:34:36 by mshehata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	pixel_put(t_img *data, int x, int y, int color)
 {
 	char	*dst;
 
-	if (y > data->h || x > data->w || x < 0 || y < 0)
+	if (y >= data->h || x >= data->w || x < 0 || y < 0)
 		return ;
 	dst = data->addr + (y * data->line_length + x * (data->bpp / 8));
 	*(unsigned int *)dst = color;

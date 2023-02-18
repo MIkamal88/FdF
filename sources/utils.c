@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 21:40:33 by mshehata          #+#    #+#             */
-/*   Updated: 2023/02/18 08:24:07 by m_kamal          ###   ########.fr       */
+/*   Updated: 2023/02/18 16:06:29 by mshehata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ void	free_all(t_fdf *fdf)
 	free(fdf->cam);
 	free(fdf->img);
 	mlx_destroy_window(fdf->win->mlx, fdf->win->m_win);
-	mlx_destroy_display(fdf->win->mlx);
 	free(fdf->win->mlx);
 	free(fdf->win);
 	free(fdf);

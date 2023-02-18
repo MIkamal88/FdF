@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_size.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 07:40:41 by mshehata          #+#    #+#             */
-/*   Updated: 2023/02/17 15:24:05 by m_kamal          ###   ########.fr       */
+/*   Updated: 2023/02/18 19:13:50 by mshehata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,9 @@ t_map	*map_read(char *file_name)
 	if (!map)
 		return (NULL);
 	fd = open(file_name, O_RDONLY);
-	if (fd < 0)
-		err_hndl("Can't read Map size.");
 	line = get_next_line(fd);
+	if (fd < 0 || !line)
+		err_hndl("Can't read Map size.");
 	map->x_max = count_x(line, ' ');
 	free(line);
 	map->y_max = get_height(fd);

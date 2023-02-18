@@ -6,7 +6,7 @@
 /*   By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 14:31:47 by mshehata          #+#    #+#             */
-/*   Updated: 2023/01/15 10:23:26 by mshehata         ###   ########.fr       */
+/*   Updated: 2023/02/18 17:53:26 by mshehata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,3 @@ char	*ft_strtrim(char const *s1, char const *set)
 	}
 	return (str);
 }
-
-// int	main(void)
-// {
-// 	printf("%s", ft_strtrim("1234561237890123", "123"));
-// }

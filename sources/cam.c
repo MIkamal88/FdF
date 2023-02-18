@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cam.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 04:48:14 by m_kamal           #+#    #+#             */
-/*   Updated: 2023/02/17 09:01:58 by m_kamal          ###   ########.fr       */
+/*   Updated: 2023/02/18 18:00:48 by mshehata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	cam_pov(t_cam *cam, t_line *line)
 	move(line, cam->move_x, cam->move_y);
 }
 
-t_cam	*init_cam(t_map *map)
+t_cam	*init_cam(void)
 {
 	t_cam	*cam;
 
