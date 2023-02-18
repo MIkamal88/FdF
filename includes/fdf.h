@@ -6,7 +6,7 @@
 /*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 18:29:26 by mshehata          #+#    #+#             */
-/*   Updated: 2023/02/18 09:35:57 by m_kamal          ###   ########.fr       */
+/*   Updated: 2023/02/18 12:28:41 by m_kamal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ typedef struct s_pixel {
 typedef struct s_line {
 	t_pixel	start;
 	t_pixel	end;
-	int		dx;
-	int		dy;
-	int		decision;
+	float	dx;
+	float	dy;
+	float	decision;
 	int		color;
 }	t_line;
 
@@ -102,6 +102,5 @@ void	reset_cam(t_fdf *fdf);
 void	free_map(t_map *map);
 void	free_all(t_fdf *fdf);
 void	err_hndl(char *err);
-// void	draw_line2(t_img *img, t_line *line);
 
 #endif
