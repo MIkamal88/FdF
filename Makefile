@@ -6,7 +6,7 @@
 #    By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/14 18:07:59 by mshehata          #+#    #+#              #
-#    Updated: 2023/02/18 07:02:10 by m_kamal          ###   ########.fr        #
+#    Updated: 2023/02/18 08:14:30 by m_kamal          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ FLAGS = -Wall -Wextra -Werror #-fsanitize=address #remove -g before submission
 
 RM = rm -f
 
-all :	$(MAC)
+all :	$(LINUX)
 
 $(LINUX):	ANNOUNCE $(OFILES)
 	$(CC) $(FLAGS) $(OFILES) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(LINUX)
