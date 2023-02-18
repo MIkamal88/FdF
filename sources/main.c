@@ -6,7 +6,7 @@
 /*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 10:01:35 by mshehata          #+#    #+#             */
-/*   Updated: 2023/02/18 07:53:01 by m_kamal          ###   ########.fr       */
+/*   Updated: 2023/02/18 09:59:28 by m_kamal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ int	main(int argc, char **argv)
 	file_name = argv[1];
 	fdf = init_fdf(file_name, WINDOW_WIDTH, WINDOW_HEIGHT);
 	render(fdf, TEXT_COLOR);
+	// print_text(fdf);
 	mlx_hook(fdf->win->m_win, 17, 0, exit_window, fdf);
 	mlx_key_hook(fdf->win->m_win, key_parse, fdf);
 	mlx_loop(fdf->win->mlx);

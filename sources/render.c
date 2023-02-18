@@ -6,7 +6,7 @@
 /*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 11:28:36 by m_kamal           #+#    #+#             */
-/*   Updated: 2023/02/17 09:22:34 by m_kamal          ###   ########.fr       */
+/*   Updated: 2023/02/18 10:01:58 by m_kamal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,5 @@ void	render(t_fdf *fdf, int color)
 	}
 	mlx_put_image_to_window(fdf->win->mlx, fdf->win->m_win,
 		fdf->img->img_ptr, 0, 0);
+	print_text(fdf);
 }

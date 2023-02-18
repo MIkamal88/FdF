@@ -6,7 +6,7 @@
 /*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 18:29:26 by mshehata          #+#    #+#             */
-/*   Updated: 2023/02/18 06:55:35 by m_kamal          ###   ########.fr       */
+/*   Updated: 2023/02/18 09:35:57 by m_kamal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ int		ft_abs(int n);
 void	swap_points(t_pixel *p0, t_pixel *p1);
 void	draw_line(t_img *img, t_line *line);
 void	pixel_put(t_img *data, int x, int y, int color);
+void	print_text(t_fdf *fdf);
 int		exit_window(t_fdf *fdf);
 int		key_parse(int key, t_fdf *fdf);
 void	reset_cam(t_fdf *fdf);

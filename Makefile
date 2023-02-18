@@ -6,7 +6,7 @@
 #    By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/14 18:07:59 by mshehata          #+#    #+#              #
-#    Updated: 2023/02/18 08:14:30 by m_kamal          ###   ########.fr        #
+#    Updated: 2023/02/18 09:37:22 by m_kamal          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ LIBFT =	./libft/srcs/ft_split.c ./libft/srcs/ft_atoi.c ./libft/srcs/ft_bzero.c .
 		./libft/srcs/ft_strdup.c ./libft/srcs/ft_strlcat.c ./libft/srcs/ft_strlcpy.c ./libft/srcs/ft_strnstr.c ./libft/srcs/ft_strtrim.c\
 
 SRCS = ./sources/main.c ./sources/hooks.c ./sources/line.c ./sources/errors.c ./sources/utils.c ./sources/parsing.c\
-		./sources/map_size.c ./sources/render.c ./sources/projection.c ./sources/cam.c
+		./sources/map_size.c ./sources/render.c ./sources/projection.c ./sources/cam.c ./sources/menu.c\
 
 OFILES = $(LIBFT:.c=.o) $(SRCS:.c=.o)
 
@@ -57,15 +57,4 @@ re: fclean all
 
 .PHONY: all clean fclean re
 
-#ifeq ($(shell uname -s), Linux)
-#	MLX_DIR		=	minilibx_linux
-#	MLX			=	libmlx_Linux.a
-#	LINK_MLX	=	-I$(MLX_DIR) -L$(MLX_DIR) -lmlx_Linux -lXext -lX11 -lm -lz
-#endif
-
-#ifeq ($(shell uname -s), Darwin)
-#	MLX_DIR		=	minilibx_mac
-#	MLX			=	libmlx.a
-#	LINK_MLX	=	-L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
-#endif
 #valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./fdf ./maps/42.fdf
