@@ -6,44 +6,36 @@
 /*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 07:40:41 by mshehata          #+#    #+#             */
-/*   Updated: 2023/02/15 16:43:21 by m_kamal          ###   ########.fr       */
+/*   Updated: 2023/02/18 07:59:33 by m_kamal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 #include "../includes/color.h"
 
-static int	get_z_coord(char *line, int i, int x_max)
-{
-	char	**z_coords;
-	int		z;
-
-	if (!line)
-		return (0);
-	z_coords = ft_split(line, ' ');
-	z = ft_atoi(z_coords[i]);
-	i = 0;
-	while (z_coords[i])
-	{
-		free(z_coords[i]);
-		i++;
-	}
-	free(z_coords);
-	return (z);
-}
-
 static void	fill_row(t_map *map, char *line, int y)
 {
-	int	i;
+	char	**z_data;
+	int		i;
 
+	if (!line)
+		return ;
 	i = 0;
+	z_data = ft_split(line, ' ');
 	while (i < map->x_max)
 	{
 		map->matrix[y][i].x = i;
 		map->matrix[y][i].y = y;
-		map->matrix[y][i].z = get_z_coord(line, i, map->x_max);
+		map->matrix[y][i].z = ft_atoi(z_data[i]);
 		i++;
 	}
+	i = 0;
+	while (z_data[i])
+	{
+		free(z_data[i]);
+		i++;
+	}
+	free(z_data);
 }
 
 t_pixel	**map_fill(char *file_name, t_map *map, int x_max, int y_max)
