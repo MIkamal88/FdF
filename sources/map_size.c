@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_size.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+        */
+/*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 07:40:41 by mshehata          #+#    #+#             */
-/*   Updated: 2023/02/18 19:13:50 by mshehata         ###   ########.fr       */
+/*   Updated: 2023/02/18 22:05:12 by m_kamal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,6 @@ static t_map	*init_map(void)
 	t_map	*map;
 
 	map = malloc(sizeof(t_map));
-	if (!map)
-		return (NULL);
 	map->matrix = NULL;
 	map->x_max = 0;
 	map->y_max = 0;
@@ -74,7 +72,7 @@ t_map	*map_read(char *file_name)
 	fd = open(file_name, O_RDONLY);
 	line = get_next_line(fd);
 	if (fd < 0 || !line)
-		err_hndl("Can't read Map size.");
+		err_hndl("Can't read Map.");
 	map->x_max = count_x(line, ' ');
 	free(line);
 	map->y_max = get_height(fd);

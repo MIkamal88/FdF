@@ -6,7 +6,7 @@
 /*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 07:40:41 by mshehata          #+#    #+#             */
-/*   Updated: 2023/02/18 08:22:24 by m_kamal          ###   ########.fr       */
+/*   Updated: 2023/02/18 22:05:05 by m_kamal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,10 @@ t_pixel	**map_fill(char *file_name, t_map *map, int x_max, int y_max)
 	y = 0;
 	fd = open(file_name, O_RDONLY);
 	if (fd < 0)
-		err_hndl("Map failed to open.");
+		err_hndl("Can't read Map.");
 	map->matrix = malloc(sizeof(t_pixel *) * y_max);
 	if (!map->matrix)
-		err_hndl("Memory allocation for Map Matrix failed.");
+		err_hndl("Can't read Map.");
 	line = get_next_line(fd);
 	while (line)
 	{

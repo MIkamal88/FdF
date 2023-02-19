@@ -3,14 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+         #
+#    By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/14 18:07:59 by mshehata          #+#    #+#              #
-#    Updated: 2023/02/18 18:18:14 by mshehata         ###   ########.fr        #
+#    Updated: 2023/02/19 06:36:06 by m_kamal          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 MAC = fdf
+LINUX = fdf
 
 LIBFT =	./libft/srcs/ft_split.c ./libft/srcs/ft_atoi.c ./libft/srcs/ft_bzero.c ./libft/srcs/ft_calloc.c ./libft/srcs/get_next_line.c\
 		./libft/srcs/ft_strjoin.c ./libft/srcs/ft_itoa.c ./libft/srcs/ft_lstclear.c\
@@ -25,16 +26,19 @@ SRCS = ./sources/main.c ./sources/hooks.c ./sources/line.c ./sources/errors.c ./
 
 OFILES = $(LIBFT:.c=.o) $(SRCS:.c=.o)
 
-CC = gcc
+CC = gcc -O3
 
-CFLAGS = -Wall -Wextra -Werror -g#remove -g before submission
+CFLAGS = -Wall -Wextra -Werror#-fsanitize=address #remove -g before submission
 
 RM = rm -f
 
-all :	$(MAC)
+all :	$(LINUX)
 
-$(MAC):	ANNOUNCE $(OFILES)
-	$(CC) $(CFLAGS) $(OFILES) -Lmlx_mac -lmlx -framework OpenGL -framework AppKit -o $(MAC)
+$(LINUX):	ANNOUNCE $(OFILES)
+	$(CC) $(CFLAGS) $(OFILES) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(LINUX)
+
+#$(MAC):	ANNOUNCE $(OFILES)
+#	$(CC) $(CFLAGS) $(OFILES) -Lmlx_mac -lmlx -framework OpenGL -framework AppKit -o $(MAC)
 
 ANNOUNCE:
 	@echo "\033[0;33mCompiling FdF..."
@@ -45,13 +49,13 @@ clean:
 
 fclean: clean
 	@echo "\033[31mRemoving FdF"
-	@$(RM) $(MAC)
+	@$(RM) $(LINUX)
 
 re: fclean all
 
-.SILENT: $(MAC) $(OFILES)
+.SILENT: $(LINUX) $(OFILES)
 
 .PHONY: all clean fclean re
 
 #valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./fdf ./maps/42.fdf
-#To fix argv1 has to include .fdf only
+

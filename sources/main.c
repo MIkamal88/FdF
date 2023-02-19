@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+        */
+/*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 10:01:35 by mshehata          #+#    #+#             */
-/*   Updated: 2023/02/18 18:49:34 by mshehata         ###   ########.fr       */
+/*   Updated: 2023/02/18 22:09:54 by m_kamal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ static t_fdf	*init_fdf(char *filename, int w, int h)
 	map_fill(filename, fdf->map, fdf->map->x_max, fdf->map->y_max);
 	if (!fdf->map)
 	{
-		err_hndl("Can't Parse map.");
 		free(fdf);
+		err_hndl("Can't read Map.");
 	}
 	fdf->win = new_win(w, h);
 	fdf->img = new_img(w, h, fdf->win);
@@ -66,16 +66,11 @@ static t_fdf	*init_fdf(char *filename, int w, int h)
 	return (fdf);
 }
 
-int	ft_strcmp(char *s1, char *s2)
+void	mlx_to_do(t_fdf *fdf)
 {
-	if (!s1 || !s2)
-		return (0);
-	while (*s1 == *s2 && *s1)
-	{
-		s1 ++;
-		s2 ++;
-	}
-	return (*s1 - *s2);
+	mlx_hook(fdf->win->m_win, 17, 0, exit_window, fdf);
+	mlx_key_hook(fdf->win->m_win, key_parse, fdf);
+	mlx_loop(fdf->win->mlx);
 }
 
 int	main(int argc, char **argv)
@@ -87,19 +82,18 @@ int	main(int argc, char **argv)
 
 	i = 0;
 	if (argc != 2)
-		err_hndl("Please enter a valid map path.");
+		err_hndl("Can't read Map.");
 	file_name = argv[1];
 	file_test = ft_split(file_name, '.');
 	while (file_test[i])
 		i++;
 	if (ft_strcmp(file_test[i - 1], "fdf") != 0)
-		err_hndl("Please enter a valid map.");
-	else
-	{
-		fdf = init_fdf(file_name, WINDOW_WIDTH, WINDOW_HEIGHT);
-		render(fdf, TEXT_COLOR);
-		mlx_hook(fdf->win->m_win, 17, 0, exit_window, fdf);
-		mlx_key_hook(fdf->win->m_win, key_parse, fdf);
-		mlx_loop(fdf->win->mlx);
-	}
+		err_hndl("Can't read Map.");
+	i = 0;
+	while (file_test[i])
+		free(file_test[i++]);
+	free(file_test);
+	fdf = init_fdf(file_name, WINDOW_WIDTH, WINDOW_HEIGHT);
+	render(fdf, TEXT_COLOR);
+	mlx_to_do(fdf);
 }

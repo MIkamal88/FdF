@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mshehata <mshehata@student.42.fr>          +#+  +:+       +#+        */
+/*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 18:29:26 by mshehata          #+#    #+#             */
-/*   Updated: 2023/02/18 18:00:59 by mshehata         ###   ########.fr       */
+/*   Updated: 2023/02/18 21:10:19 by m_kamal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 # include "../libft/includes/libft.h"
 # include "../libft/includes/get_next_line.h"
-// # include "../mlx_linux/mlx.h"
+# include "../mlx_linux/mlx.h"
 # include <math.h>
-# include "../mlx_mac/mlx.h"
+// # include "../mlx_mac/mlx.h"
 
 # define WINDOW_WIDTH	1920
 # define WINDOW_HEIGHT	1080
@@ -88,6 +88,7 @@ t_map	*map_read(char *filename);
 t_pixel	**map_fill(char *file_name, t_map *map, int x_max, int y_max);
 t_line	*start_line(t_pixel p0, t_pixel p1, int color);
 t_cam	*init_cam(void);
+int		ft_strcmp(char *s1, char *s2);
 void	render(t_fdf *fdf, int color);
 void	projection(t_cam *cam, t_line *line);
 void	cam_pov(t_cam *cam, t_line *line);
