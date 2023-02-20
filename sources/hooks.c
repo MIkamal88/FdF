@@ -6,7 +6,7 @@
 /*   By: m_kamal <m_kamal@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 13:45:46 by mshehata          #+#    #+#             */
-/*   Updated: 2023/02/18 10:01:01 by m_kamal          ###   ########.fr       */
+/*   Updated: 2023/02/20 21:37:11 by m_kamal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,12 @@ static void	zoom_cam(int key, t_fdf *fdf)
 	if (key == KEY_I)
 		fdf->cam->zoom += 5;
 	if (key == KEY_O)
-		fdf->cam->zoom -= 5;
+	{
+		if (fdf->cam->zoom == 5)
+			return ;
+		else
+			fdf->cam->zoom -= 5;
+	}
 }
 
 int	exit_window(t_fdf *fdf)
